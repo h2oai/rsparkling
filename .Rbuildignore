@@ -3,4 +3,5 @@
 ^h2ologs$
 derby.log
 ^README.*$
+.gitlab-ci.yml
 

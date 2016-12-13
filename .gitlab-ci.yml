@@ -1,0 +1,195 @@
+variables:
+  CRAN_MIRROR: "https://cloud.r-project.org"
+  _R_CHECK_CRAN_INCOMING_: "FALSE" # unlike CRAN
+  _R_CHECK_CRAN_INCOMING_REMOTE_: "FALSE" # unlike CRAN
+  _R_CHECK_VC_DIRS_: "TRUE"
+  _R_CHECK_TIMINGS_: "10"
+  _R_CHECK_INSTALL_DEPENDS_: "TRUE"
+  _R_CHECK_SUGGESTS_ONLY_: "TRUE"
+  _R_CHECK_NO_RECOMMENDED_: "TRUE"
+  _R_CHECK_EXECUTABLES_EXCLUSIONS_: "FALSE"
+  _R_CHECK_DOC_SIZES2_: "TRUE"
+  _R_CHECK_CODE_ASSIGN_TO_GLOBALENV_: "TRUE"
+  _R_CHECK_CODE_ATTACH_: "TRUE"
+  _R_CHECK_CODE_DATA_INTO_GLOBALENV_: "TRUE"
+  _R_CHECK_CODE_USAGE_VIA_NAMESPACES_: "TRUE"
+  _R_CHECK_DOT_FIRSTLIB_: "TRUE"
+  _R_CHECK_DEPRECATED_DEFUNCT_: "TRUE"
+  _R_CHECK_REPLACING_IMPORTS_: "TRUE"
+  _R_CHECK_SCREEN_DEVICE_: "stop"
+  _R_CHECK_TOPLEVEL_FILES_: "TRUE"
+  _R_CHECK_S3_METHODS_NOT_REGISTERED_: "TRUE"
+  _R_CHECK_OVERWRITE_REGISTERED_S3_METHODS_: "TRUE"
+  _R_CHECK_FORCE_SUGGESTS_: "FALSE"
+
+stages:
+  - dependencies
+  - build
+  - test
+
+mirror-packages:
+  stage: dependencies
+  tags:
+    - linux
+    - medium
+  image: docker.io/jangorecki/r-base-dev
+  script:
+    - mkdir -p bus/$CI_BUILD_NAME/cran/src/contrib
+    # mirror R dependencies
+    - wget -q -O ci.R http://gitlab.0xdata.loc/jangorecki/cran/raw/master/ci.R
+    - Rscript -e 'source("ci.R"); mirror.packages(packages.dcf("DESCRIPTION", "all"), repos=Sys.getenv("CRAN_MIRROR"), repodir="bus/mirror-packages/cran")'
+    #- Rscript -e 'source("ci.R"); mirror.packages(type="win.binary", packages.dcf(c("h2o-DESCRIPTION.template","h2oEnsemble-DESCRIPTION","rsparkling-DESCRIPTION"), "all"), repos=Sys.getenv("CRAN_MIRROR"), repodir="bus/mirror-packages/cran")'
+    # devel h2o
+    - Rscript -e 'source("ci.R"); mirror.packages("h2o", repos="http://cran.0xdata.loc", repodir="bus/build-h2o/cran")'
+    - mv ci.R bus/.
+  artifacts:
+    expire_in: 2 weeks
+    paths:
+      - bus
+
+build-rsparkling:
+  stage: build
+  tags:
+    - linux
+    - medium
+  image: docker.io/jangorecki/r-builder-openjdk8
+  dependencies: []
+  #- mirror-packages # when dependencies required (also on vignettes) # when uncomment also handle no "bus" dir in build
+  script:
+    - R CMD build .
+    - mkdir -p bus/$CI_BUILD_NAME/cran/src/contrib
+    - mv $(ls -1t rsparkling_*.tar.gz | head -n 1) bus/$CI_BUILD_NAME/cran/src/contrib/.
+    - Rscript -e 'tools::write_PACKAGES(contrib.url("bus/build-rsparkling/cran"), addFiles=TRUE)'
+  artifacts:
+    expire_in: 2 weeks
+    paths:
+      - bus
+
+test-rsparkling-r-release:
+  stage: test
+  tags:
+    - linux
+    - medium
+  image: docker.io/jangorecki/r-builder-openjdk8
+  variables:
+    NOT_CRAN: "true"
+    #H2O_JAR_PATH: "$CI_PROJECT_DIR/bus/h2o-release/java/h2o.jar" # TODO: re-use jar
+  dependencies:
+  - mirror-packages
+  - build-rsparkling
+  script:
+    - mkdir -p bus/$CI_BUILD_NAME
+    - Rscript -e 'source("bus/ci.R"); if (length(pkgs<-packages.dcf("DESCRIPTION", "all"))) install.packages(pkgs, repos=file.path("file:",normalizePath("bus/mirror-packages/cran")))'
+    - cd bus/$CI_BUILD_NAME
+    - Rscript -e 'file.copy(download.packages("rsparkling", repos=file.path("file:",normalizePath("../build-rsparkling/cran")))[,2], ".")'
+    - R CMD check --run-dontrun --run-donttest $(ls -1t rsparkling_*.tar.gz | head -n 1)
+  artifacts:
+    expire_in: 2 weeks
+    when: always
+    paths:
+      - bus
+
+test-rsparkling-r-release-cran:
+  stage: test
+  tags:
+    - linux
+    - medium
+  image: docker.io/jangorecki/r-builder-openjdk8
+  variables:
+    _R_CHECK_CRAN_INCOMING_: "TRUE"
+    _R_CHECK_CRAN_INCOMING_REMOTE_: "TRUE"
+    #H2O_JAR_PATH: "$CI_PROJECT_DIR/bus/h2o-release/java/h2o.jar"
+  dependencies:
+  - mirror-packages
+  - build-rsparkling
+  script:
+    - mkdir -p bus/$CI_BUILD_NAME
+    - Rscript -e 'source("bus/ci.R"); if (length(pkgs<-packages.dcf("DESCRIPTION", "all"))) install.packages(pkgs, repos=file.path("file:",normalizePath("bus/mirror-packages/cran")))'
+    - cd bus/$CI_BUILD_NAME
+    - Rscript -e 'file.copy(download.packages("rsparkling", repos=file.path("file:",normalizePath("../build-rsparkling/cran")))[,2], ".")'
+    - R CMD check --as-cran $(ls -1t rsparkling_*.tar.gz | head -n 1)
+  artifacts:
+    expire_in: 2 weeks
+    when: always
+    paths:
+      - bus
+
+test-rsparkling-r-release-h2o-devel:
+  stage: test
+  tags:
+    - linux
+    - medium
+  image: docker.io/jangorecki/r-builder-openjdk8
+  variables:
+    NOT_CRAN: "true"
+    #H2O_JAR_PATH: "$CI_PROJECT_DIR/bus/build-h2o/java/h2o.jar"
+  dependencies:
+  - mirror-packages
+  - build-rsparkling
+  script:
+    - mkdir -p bus/$CI_BUILD_NAME
+    - Rscript -e 'source("bus/ci.R"); if (length(pkgs<-packages.dcf("DESCRIPTION", "all"))) install.packages(pkgs, repos=file.path("file:",normalizePath(c("bus/mirror-packages/cran","bus/build-h2o/cran")))); packageVersion("h2o")'
+    - cd bus/$CI_BUILD_NAME
+    - Rscript -e 'file.copy(download.packages("rsparkling", repos=file.path("file:",normalizePath("../build-rsparkling/cran")))[,2], ".")'
+    - R CMD check --run-dontrun --run-donttest $(ls -1t rsparkling_*.tar.gz | head -n 1)
+  artifacts:
+    expire_in: 2 weeks
+    when: always
+    paths:
+      - bus
+
+test-rsparkling-r-release-h2o-oldrel:
+  stage: test
+  tags:
+    - linux
+    - medium
+  image: docker.io/jangorecki/r-builder-openjdk8
+  variables:
+    NOT_CRAN: "true"
+    #H2O_JAR_PATH: "$CI_PROJECT_DIR/bus/h2o-3.8.3.3/java/h2o.jar" # this requires even older one, and can be resolved directly from s3 because it is not going to be reused anywhere
+  dependencies:
+  - mirror-packages
+  - build-rsparkling
+  script:
+    - mkdir -p bus/$CI_BUILD_NAME
+    # h2o-oldrel
+    - wget -q https://cran.r-project.org/src/contrib/Archive/h2o/h2o_3.8.3.3.tar.gz
+    - tar -zxf h2o_3.8.3.3.tar.gz # this requires cran-dev repo to reach deps
+    - Rscript -e 'source("bus/ci.R"); if (length(pkgs<-packages.dcf("h2o/DESCRIPTION"))) install.packages(pkgs, repos=c(file.path("file:",normalizePath("bus/mirror-packages/cran")), sprintf("http://%s.0xdata.loc", c("cran","cran-dev"))))'
+    - R CMD INSTALL h2o_3.8.3.3.tar.gz
+    # rsparkling
+    - Rscript -e 'source("bus/ci.R"); if (length(pkgs<-setdiff(packages.dcf("DESCRIPTION", "all"), "h2o"))) install.packages(pkgs, repos=file.path("file:",normalizePath(c("bus/mirror-packages/cran")))); packageVersion("h2o")'
+    - cd bus/$CI_BUILD_NAME
+    - Rscript -e 'file.copy(download.packages("rsparkling", repos=file.path("file:",normalizePath("../build-rsparkling/cran")))[,2], ".")'
+    - R CMD check --run-dontrun --run-donttest $(ls -1t rsparkling_*.tar.gz | head -n 1)
+  artifacts:
+    expire_in: 2 weeks
+    when: always
+    paths:
+      - bus
+
+test-rsparkling-spark2-r-release:
+  stage: test
+  tags:
+    - linux
+    - medium
+  image: docker.io/jangorecki/r-builder-openjdk8
+  variables:
+    NOT_CRAN: "true"
+    SPARK_VERSION: "2.0.1"
+    SPARKLINGWATER_VERSION: "2.0.0"
+    #H2O_JAR_PATH: "$CI_PROJECT_DIR/bus/h2o-release/java/h2o.jar" # read in test-h2oEnsemble-r-release
+  dependencies:
+  - mirror-packages
+  - build-rsparkling
+  script:
+    - mkdir -p bus/$CI_BUILD_NAME
+    - Rscript -e 'source("bus/ci.R"); if (length(pkgs<-packages.dcf("DESCRIPTION", "all"))) install.packages(pkgs, repos=file.path("file:",normalizePath("bus/mirror-packages/cran")))'
+    - cd bus/$CI_BUILD_NAME
+    - Rscript -e 'file.copy(download.packages("rsparkling", repos=file.path("file:",normalizePath("../build-rsparkling/cran")))[,2], ".")'
+    - R CMD check --run-dontrun --run-donttest $(ls -1t rsparkling_*.tar.gz | head -n 1)
+  artifacts:
+    expire_in: 2 weeks
+    when: always
+    paths:
+      - bus
