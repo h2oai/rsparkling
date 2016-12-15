@@ -77,13 +77,13 @@ If Spark needs to be installed, that can be done using the following sparklyr co
 
 ``` r
 library(sparklyr)
-spark_install(version = "1.6.2")
+spark_install(version = "2.0.0")
 ```
 
-
-The call to `library(rsparkling)` will make the H2O functions available on the R search path and will also ensure that the dependencies required by the Sparkling Water package are included when we connect to Spark. 
-
+The call to `options(rsparkling.sparklingwater.version = ...)` will globally set up a specific Sparkling Water version. This is the version of Sparkling Water that will be called in the `library(rsparkling)` command, which will make the H2O functions available on the R search path and will also ensure that the dependencies required by the Sparkling Water package are included when we connect to Spark. 
 ``` r
+options(rsparkling.sparklingwater.version = "2.0.0") # Using Sparkling Water 2.0.0 
+
 library(rsparkling)  # H2O Sparkling Water Machine Learning
 ```
 
