@@ -55,18 +55,18 @@ install.packages("sparklyr")
 
 
 ### Install rsparkling
-The latest stable version of rsparkling can be installed as follows:
+The latest stable version of rsparkling can be installed from the "stable" branch as follows:
 
 ```r
 library(devtools)
-devtools::install_github("h2oai/sparkling-water", ref = "master", subdir = "/r/rsparkling")
+devtools::install_github("h2oai/rsparkling", ref = "stable")
 ``` 
 
-The development version can be installed from the "rsparkling" branch as follows:
+The development version can be installed from the "master" branch as follows:
 
 ```r
 library(devtools)
-devtools::install_github("h2oai/sparkling-water", ref = "rsparkling", subdir = "/r/rsparkling")
+devtools::install_github("h2oai/rsparkling", ref = "master")
 ``` 
 
 

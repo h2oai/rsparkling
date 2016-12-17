@@ -21,6 +21,6 @@ Encoding: UTF-8
 LazyData: true
 NeedsCompilation: no
 SystemRequirements: Java (>= 1.6)
-URL: https://github.com/h2oai/sparkling-water/tree/master/r/rsparkling
+URL: https://github.com/h2oai/rsparkling
 BugReports: http://jira.h2o.ai
 RoxygenNote: 5.0.1
