@@ -5,7 +5,7 @@
 [![][license img]][license]
 
 [travis]:https://travis-ci.org/h2oai/rsparkling
-[travis img]:https://travis-ci.org/h2oai/rsparkling.svg?branch=NG_travis
+[travis img]:https://travis-ci.org/h2oai/rsparkling.svg?branch=master
 
 [license]:LICENSE
 [license img]:https://img.shields.io/badge/License-Apache%202-blue.svg
