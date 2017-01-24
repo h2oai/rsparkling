@@ -1,5 +1,14 @@
 # RSparkling
 
+[![Join the chat at https://gitter.im/h2oai/sparkling-water](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/h2oai/rsparkling?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![][travis img]][travis]
+[![][license img]][license]
+
+[travis]:https://travis-ci.org/h2oai/rsparkling
+[travis img]:https://travis-ci.org/h2oai/rsparkling.svg?branch=NG_travis
+
+[license]:LICENSE
+[license img]:https://img.shields.io/badge/License-Apache%202-blue.svg
 
 The **rsparkling** R package is an extension package for
 [sparkapi](https://github.com/rstudio/sparkapi)
