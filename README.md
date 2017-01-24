@@ -55,12 +55,19 @@ install.packages("sparklyr")
 
 
 ### Install rsparkling
+
+The latest version of rsparkling on CRAN can be installed as follows:
+
+```r
+install.packages("rsparkling")
+```
+
 The latest stable version of rsparkling can be installed from the "stable" branch as follows:
 
 ```r
 library(devtools)
 devtools::install_github("h2oai/rsparkling", ref = "stable")
-``` 
+```  
 
 The development version can be installed from the "master" branch as follows:
 
