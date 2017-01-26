@@ -114,6 +114,11 @@ spark_install(version = "2.0.0")
 
 The call to `options(rsparkling.sparklingwater.version = ...)` will globally set up a specific Sparkling Water version, which is the version of Sparkling Water that will be called in the `library(rsparkling)` command.
 
+**NOTE**: 
+If you would like to use a custom Sparkling Water jar, then you need to call the following:
+`options(rsparkling.sparklingwater.location = "path/to/sparkling_water.jar")`. 
+This will be the version of Sparkling Water that will be called in the `library(rsparkling)` command.
+
 ``` r
 options(rsparkling.sparklingwater.version = "2.0.3") # Using Sparkling Water 2.0.3
 library(rsparkling) 
