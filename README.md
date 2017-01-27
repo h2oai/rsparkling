@@ -97,7 +97,6 @@ spark_install(version = "2.0.0")
 ```
 
 The call to `options(rsparkling.sparklingwater.version = ...)` will globally set up a specific Sparkling Water version, which is the version of Sparkling Water that will be called in the `library(rsparkling)` command. 
-The call to `library(rsparkling)` will make the H2O functions available on the R search path and ensure that the dependencies required by the Sparkling Water package are included when we connect to Spark.
 
 ``` r
 options(rsparkling.sparklingwater.version = "2.0.0") # Using Sparkling Water 2.0.0 
@@ -207,6 +206,12 @@ mtcars_hf
 ## Sparkling Water: H2O Machine Learning
 
 Using the same mtcars dataset, here is an example where we train a Gradient Boosting Machine (GBM) to predict "mpg".
+
+First, we do a library call to h2o:
+
+```
+library(h2o)
+```
 
 ### Prep data:
 Define the response, `y`, and set of predictor variables, `x`:
