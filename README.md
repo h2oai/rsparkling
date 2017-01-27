@@ -11,8 +11,6 @@
 [license img]:https://img.shields.io/badge/License-Apache%202-blue.svg
 
 The **rsparkling** R package is an extension package for
-[sparkapi](https://github.com/rstudio/sparkapi)
-/
 [sparklyr](http://spark.rstudio.com)
 that creates an R front-end for a Spark package
 ([Sparkling Water](https://mvnrepository.com/search?q=h2o+sparkling+water)
