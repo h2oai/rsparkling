@@ -28,14 +28,42 @@ This package implements basic functionality (creating an H2OContext, showing the
 * [H2O.ai website](http://h2o.ai)
 * Code for the example shown below is [here](https://github.com/h2oai/rsparkling/blob/master/inst/examples/example_rsparkling.R).
 
+## Integration
+
+`rsparkling` requires certain integration settings (specific Sparkling Water versions must match specific Spark and H2O versions).
+Refer to integration info below.
+
+| Spark Version | Sparkling Water Version | H2O Version |
+| ------------- | ----------------------- | ----------- |
+| 2.0           | 2.0.0                   | 3.10.0.7    |
+|               | 2.0.1                   | 3.10.0.10   |
+|               | 2.0.2                   | 3.10.0.10   |
+|               | 2.0.3                   | 3.10.1.2    |
+|               |                         |             |
+| 1.6           | 1.6.1                   | 3.10.0.7    |
+|               | 1.6.2                   | 3.8.1.3     |
+|               | 1.6.3                   | 3.8.2.3     |
+|               | 1.6.4                   | 3.8.2.4     |
+|               | 1.6.5                   | 3.8.2.6     |
+|               | 1.6.6                   | 3.10.0.4    |
+|               | 1.6.7                   | 3.10.0.6    |
+|               | 1.6.8                   | 3.10.0.7    |
+
+The example below will use Spark version 2.0, Sparkling Water version 2.0.3, & H2O version 3.10.1.2.
 
 ## Installation
 
-The **rsparkling** R package requires the **h2o** and **sparklyr** R packages to run.
+The **rsparkling** R package requires the **sparklyr** and **h2o** R packages to run.
+
+### Install sparklyr
+
+We recommend the latest stable version of [sparklyr](http://spark.rstudio.com/index.html).
+
+```r
+install.packages("sparklyr")
+```
 
 ### Install h2o
-
-Today (Sept. 2016, the initial github release of rsparkling) you must use H2O R package version [3.10.0.6](http://h2o-release.s3.amazonaws.com/h2o/rel-turing/6/index.html#R) (H2O "Turing" release, build 6), since that version of H2O is embedded in rsparkling.  This will be more flexible in the future.
 
 ```r
 # The following two commands remove any previously installed H2O packages for R.
@@ -48,18 +76,10 @@ for (pkg in pkgs) {
     if (! (pkg %in% rownames(installed.packages()))) { install.packages(pkg) }
 }
 
-# Now we download, install and initialize the H2O package for R.
-install.packages("h2o", type = "source", repos = "http://h2o-release.s3.amazonaws.com/h2o/rel-turing/6/R")
+# Now we download, install, and initialize the H2O package for R. 
+# In this case we are using rel-turnbull 2 (3.10.1.2).
+install.packages("h2o", type = "source", repos = "http://h2o-release.s3.amazonaws.com/h2o/rel-turnbull/2/R")
 ```
-
-### Install sparklyr
-
-We recommend the latest stable version of [sparklyr](http://spark.rstudio.com/index.html).
-
-```r
-install.packages("sparklyr")
-```
-
 
 ### Install rsparkling
 
@@ -83,8 +103,6 @@ library(devtools)
 devtools::install_github("h2oai/rsparkling", ref = "master")
 ``` 
 
-
-
 ## Connecting to Spark
 
 If Spark needs to be installed, that can be done using the following sparklyr command:
@@ -94,10 +112,10 @@ library(sparklyr)
 spark_install(version = "2.0.0")
 ```
 
-The call to `options(rsparkling.sparklingwater.version = ...)` will globally set up a specific Sparkling Water version, which is the version of Sparkling Water that will be called in the `library(rsparkling)` command. 
+The call to `options(rsparkling.sparklingwater.version = ...)` will globally set up a specific Sparkling Water version, which is the version of Sparkling Water that will be called in the `library(rsparkling)` command.
 
 ``` r
-options(rsparkling.sparklingwater.version = "2.0.0") # Using Sparkling Water 2.0.0 
+options(rsparkling.sparklingwater.version = "2.0.3") # Using Sparkling Water 2.0.3
 library(rsparkling) 
 ```
 
