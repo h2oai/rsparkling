@@ -33,21 +33,30 @@ This package implements basic functionality (creating an H2OContext, showing the
 `rsparkling` requires certain integration settings (specific Sparkling Water versions must match specific Spark and H2O versions).
 Refer to integration info below.
 
-| Spark Version | Sparkling Water Version | H2O Version |
-| ------------- | ----------------------- | ----------- |
-| 2.0           | 2.0.0                   | 3.10.0.7    |
-|               | 2.0.1                   | 3.10.0.10   |
-|               | 2.0.2                   | 3.10.0.10   |
-|               | 2.0.3                   | 3.10.1.2    |
-|               |                         |             |
-| 1.6           | 1.6.1                   | 3.10.0.7    |
-|               | 1.6.2                   | 3.8.1.3     |
-|               | 1.6.3                   | 3.8.2.3     |
-|               | 1.6.4                   | 3.8.2.4     |
-|               | 1.6.5                   | 3.8.2.6     |
-|               | 1.6.6                   | 3.10.0.4    |
-|               | 1.6.7                   | 3.10.0.6    |
-|               | 1.6.8                   | 3.10.0.7    |
+| Spark Version | Sparkling Water Version | H2O Version | H2O Version Name | H2O Version Number |
+| ------------- | ----------------------- | ----------- | ---------------- | ------------------ |
+| 2.0           | 2.0.0                   | 3.10.0.7    | "rel-turing"     |        "7"         |
+|               | 2.0.1                   | 3.10.0.10   | "rel-turing"     |        "10"        |                  
+|               | 2.0.2                   | 3.10.0.10   | "rel-turing"     |        "10"        |
+|               | 2.0.3                   | 3.10.1.2    | "rel-turnbull"   |        "2"         |
+|               |                         |             |                  |                    |
+| 1.6           | 1.6.1                   | 3.8.1.3     | "rel-turan"      |        "3"         |
+|               | 1.6.2                   | 3.8.1.3     | "rel-turan"      |        "3"         |
+|               | 1.6.3                   | 3.8.2.3     | "rel-turchin"    |        "3"         |
+|               | 1.6.4                   | 3.8.2.4     | "rel-turchin"    |        "4"         |
+|               | 1.6.5                   | 3.8.2.6     | "rel-turchin"    |        "6"         |
+|               | 1.6.6                   | 3.10.0.4    | "rel-turing"     |        "4"         |
+|               | 1.6.7                   | 3.10.0.6    | "rel-turing"     |        "6"         |
+|               | 1.6.8                   | 3.10.0.7    | "rel-turing"     |        "7"         |
+
+**NOTE**: A call to `h2o_release_table()` will display the above table in your R console.
+
+To install any one of the above versions you can call the helper function `install_h2o` from the `rsparkling` package:
+
+```r
+#We will install the H2O release `rel-turnbull` version `2` (H2O Version: 3.10.1.2)
+install_h2o(release_name = "rel-turnbull", release_number = "2")
+```
 
 The example below will use Spark version 2.0, Sparkling Water version 2.0.3, & H2O version 3.10.1.2.
 
