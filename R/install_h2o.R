@@ -9,7 +9,7 @@
 #' }
 #' @export
 
-install_h2o = function(release_name = "rel-tverberg", release_number = "1"){
+install_h2o <- function(release_name = "rel-tverberg", release_number = "1"){
   if(!is.character(release_name)){
     stop(paste0("`release_name` should be of type character but got ", class(release_name)))
   }
