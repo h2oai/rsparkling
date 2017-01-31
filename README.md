@@ -49,10 +49,12 @@ Refer to integration info below.
 |               | 1.6.7                   | 3.10.0.6    | "rel-turing"     |        "6"         |
 |               | 1.6.8                   | 3.10.0.7    | "rel-turing"     |        "7"         |
 
+**NOTE**: A call to `h2o_release_table()` will display the above table in your R console.
+
 To install any one of the above versions you can call the helper function `install_h2o` from the `rsparkling` package:
 
 ```r
-#We will install the H2O release `rel-turnbull` version `2`
+#We will install the H2O release `rel-turnbull` version `2` (H2O Version: 3.10.1.2)
 install_h2o(release_name = "rel-turnbull", release_number = "2")
 ```
 
