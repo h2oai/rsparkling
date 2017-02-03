@@ -16,56 +16,54 @@ spark_dependencies <- function(spark_version, scala_version, ...) {
   #If its Spark 1.6.*, then we fetch the latest Sparkling Water for Spark 1.6.*
   #If none of the above, then throw an exception
   #Also provide adequate version of H2O for latest Sparkling Water
-  if(is.null(sw_version) && is.null(sw_location)){
-    if(as.package_version(spark_version)$major == "2"){
+  if (is.null(sw_version) && is.null(sw_location)) {
+    if (as.package_version(spark_version)$major == "2") {
       #Get latest Sparkling Water release for Spark 2.0.*
-      latest = read.table("http://s3.amazonaws.com/h2o-release/sparkling-water/rel-2.0/latest")
-      sw_version = sprintf("2.0.%s",latest)
+      latest <- read.table("http://s3.amazonaws.com/h2o-release/sparkling-water/rel-2.0/latest")
+      sw_version <- sprintf("2.0.%s",latest)
       message(sprintf("Spark version %s detected. Will call latest Sparkling Water version %s",spark_version,sw_version))
-      if(packageVersion("h2o") != "3.10.1.2"){
-        message(paste0('\nDetected H2O version ',packageVersion("h2o"),'.Please install H2O version 3.10.1.2, 
-        which is compliant with the latest Sparkling Water version ',sw_version,  
-        '\nTo install simply do the following:
-        1.detach("package:rsparkling", unload=TRUE)
-        2.if ("package:h2o" %in% search()) { detach("package:h2o", unload=TRUE) }
-        3.if(isNamespaceLoaded("h2o")){ unloadNamespace("h2o") }
-        4.remove.packages("h2o")
-        5.install.packages("h2o", type="source", repos= "http://h2o-release.s3.amazonaws.com/h2o/rel-turnbull/2/R")
-        6.Since rsparkling was detached, you would need to do library(rsparkling) again.'))
+      if (packageVersion("h2o") != "3.10.1.2") {
+        message(paste0('\nDetected H2O version ', packageVersion("h2o"),'. Please install H2O version 3.10.1.2, which is compliant with the latest Sparkling Water version ', sw_version,'\n
+To update your h2o R package, copy/paste the following commands and then restart your R session:
+
+  detach("package:rsparkling", unload = TRUE)
+  if ("package:h2o" %in% search()) { detach("package:h2o", unload = TRUE) }
+  if (isNamespaceLoaded("h2o")){ unloadNamespace("h2o") }
+  remove.packages("h2o")
+  install.packages("h2o", type = "source", repos = "http://h2o-release.s3.amazonaws.com/h2o/rel-turnbull/2/R")\n'))
       }
-    }else if(as.package_version(spark_version)$major == "1" && as.package_version(spark_version)$minor == "6" ){ #Assuming Spark 1.6
+    } else if (as.package_version(spark_version)$major == "1" && as.package_version(spark_version)$minor == "6" ) { #Assuming Spark 1.6
       #Get latest Sparkling Water release for Spark 1.6.*
-      latest = read.table("http://s3.amazonaws.com/h2o-release/sparkling-water/rel-1.6/latest")
-      sw_version = sprintf("1.6.%s",latest) 
+      latest <- read.table("http://s3.amazonaws.com/h2o-release/sparkling-water/rel-1.6/latest")
+      sw_version <- sprintf("1.6.%s",latest) 
       message(sprintf("Spark version %s detected. Will call latest Sparkling Water version %s",spark_version,sw_version))
-      if(packageVersion("h2o") != "3.10.0.7"){
-        message(paste0('\nDetected H2O version ',packageVersion("h2o"),'. Please install H2O version 3.10.0.7, 
-        which is compliant with the latest Sparkling Water version ',sw_version, 
-        '\nTo install simply do the following:
-        1.detach("package:rsparkling", unload=TRUE)
-        2.if ("package:h2o" %in% search()) { detach("package:h2o", unload=TRUE) }
-        3.if(isNamespaceLoaded("h2o")){ unloadNamespace("h2o") }
-        4.remove.packages("h2o")
-        5.install.packages("h2o", type="source", repos= "http://h2o-release.s3.amazonaws.com/h2o/rel-turing/7/R")
-        6.Since rsparkling was detached, you would need to do library(rsparkling) again.'))
+      if (packageVersion("h2o") != "3.10.0.7"){
+        message(paste0('\nDetected H2O version ', packageVersion("h2o"),'. Please install H2O version 3.10.0.7, which is compliant with the latest Sparkling Water version ', sw_version,'\n
+To update your h2o R package, copy/paste the following commands and then restart your R session:
+
+  detach("package:rsparkling", unload = TRUE)
+  if ("package:h2o" %in% search()) { detach("package:h2o", unload = TRUE) }
+  if (isNamespaceLoaded("h2o")){ unloadNamespace("h2o") }
+  remove.packages("h2o")
+  install.packages("h2o", type = "source", repos = "http://h2o-release.s3.amazonaws.com/h2o/rel-turing/7/R")\n'))
       }
-    }else{
+    } else {
       stop("Spark installation 1.6.* or 2.0.* are not detected. Please install Spark 2.0.* or 1.6.*")
     }
   }
   
   #Is a path to a Sparkling Water jar provided?
-  if((!is.null(sw_location) && (!is.null(sw_version)) || !is.null(sw_location))){
+  if ((!is.null(sw_location) && (!is.null(sw_version)) || !is.null(sw_location))) {
     spark_dependency(
       jars = c(sw_location)
     )
-  }else{
-    if(as.package_version(spark_version)$major != as.package_version(sw_version)$major){
+  } else {
+    if (as.package_version(spark_version)$major != as.package_version(sw_version)$major) {
       stop(cat(paste0("Major version of Sparkling Water does not correspond to major Spark version.
                       \nMajor Sparkling Water Version = ",as.package_version(sw_version)$major,
                       "\nMajor Spark Version = ",as.package_version(spark_version)$major)))
     }
-    if(as.package_version(spark_version)$minor != as.package_version(sw_version)$minor){
+    if (as.package_version(spark_version)$minor != as.package_version(sw_version)$minor) {
       stop(cat(paste0("Minor version of Sparkling Water does not correspond to minor Spark version.
                       \nMinor Sparkling Water Version = ",as.package_version(sw_version)$minor,
                       "\nMinor Spark Version = ",as.package_version(spark_version)$minor)))
