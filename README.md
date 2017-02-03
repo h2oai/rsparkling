@@ -56,13 +56,14 @@ spark_install(version = "2.0.0")
 
 **rsparkling** currently requires that a certain version of H2O be used, depending on which major version of Spark is used, although this requirement will be relaxed in a future version.  Each release of Sparking Water is built from specific versions of H2O, and those versions are listed in the table below.
 
-Most users will want to use the most recent compatible Sparkling Water compatible version of H2O would be used.
+**rsparkling** will automatically use the latest Sparkling Water based on the major Spark version provided. In this case, the H2O version required for the latest Sparkling Water is 3.10.3.2 for Spark 2.0 and 3.10.0.7 for Spark 1.6.
 
-Advanced users may want to choose a particular Sparking Water / H2O version (specific Sparkling Water versions must match specific Spark and H2O versions), however any 2.0 compatible version of H2O will work with any minor version of Spark 2.0 (similarly for 1.6). Refer to integration info below.
+Advanced users may want to choose a particular Sparking Water / H2O version (specific Sparkling Water versions must match specific Spark and H2O versions), however any 2.0 version of Sparkling Water will work with any minor version of Spark 2.0.  (similarly for 1.6).  Refer to integration info below.
 
 | Spark Version | Sparkling Water Version | H2O Version | H2O Version Name | H2O Version Number |
 | ------------- | ----------------------- | ----------- | ---------------- | ------------------ |
-| 2.0.*         | 2.0.3                   | 3.10.1.2    | "rel-turnbull"   |        "2"         |
+| 2.0.*         | 2.0.4                   | 3.10.3.2    | "rel-tverberg"   |        "2"         |
+|               | 2.0.3                   | 3.10.1.2    | "rel-turnbull"   |        "2"         |
 |               | 2.0.2                   | 3.10.0.10   | "rel-turing"     |        "10"        |
 |               | 2.0.1                   | 3.10.0.10   | "rel-turing"     |        "10"        |                  
 |               | 2.0.0                   | 3.10.0.7    | "rel-turing"     |        "7"         |
