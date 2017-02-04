@@ -12,14 +12,13 @@
 
 The **rsparkling** R package is an extension package for
 [sparklyr](http://spark.rstudio.com)
-that creates an R front-end for a Spark package
+that creates an R front-end for the 
 ([Sparkling Water](https://mvnrepository.com/search?q=h2o+sparkling+water)
-from
-[H2O](http://h2o.ai))
-.
-This provides an interface to H2O's machine learning algorithms on Spark, using R.
+Spark package from
+[H2O](http://h2o.ai)).
+This provides an interface to H2O's high performance, distributed machine learning algorithms on Spark, using R.
 
-This package implements basic functionality (creating an H2OContext, showing the H2O Flow interface, and converting between Spark DataFrames and H2O Frames). 
+This package implements basic functionality (creating an H2OContext, showing the H2O Flow interface, and converting between Spark DataFrames and H2O Frames).  The main purpose of this package is to provide a connector between sparklyr and H2O's machine learning algorithms. 
 
 
 ## Additional Resources
@@ -28,58 +27,10 @@ This package implements basic functionality (creating an H2OContext, showing the
 * [H2O.ai website](http://h2o.ai)
 * Code for the example shown below is [here](https://github.com/h2oai/rsparkling/blob/master/inst/examples/example_rsparkling.R).
 
-## Integration
-
-`rsparkling` requires certain integration settings (specific Sparkling Water versions must match specific Spark and H2O versions).
-Refer to integration info below.
-
-| Spark Version | Sparkling Water Version | H2O Version | H2O Version Name | H2O Version Number |
-| ------------- | ----------------------- | ----------- | ---------------- | ------------------ |
-| 2.0           | 2.0.0                   | 3.10.0.7    | "rel-turing"     |        "7"         |
-|               | 2.0.1                   | 3.10.0.10   | "rel-turing"     |        "10"        |                  
-|               | 2.0.2                   | 3.10.0.10   | "rel-turing"     |        "10"        |
-|               | 2.0.3                   | 3.10.1.2    | "rel-turnbull"   |        "2"         |
-|               |                         |             |                  |                    |
-| 1.6           | 1.6.1                   | 3.8.1.3     | "rel-turan"      |        "3"         |
-|               | 1.6.2                   | 3.8.1.3     | "rel-turan"      |        "3"         |
-|               | 1.6.3                   | 3.8.2.3     | "rel-turchin"    |        "3"         |
-|               | 1.6.4                   | 3.8.2.4     | "rel-turchin"    |        "4"         |
-|               | 1.6.5                   | 3.8.2.6     | "rel-turchin"    |        "6"         |
-|               | 1.6.6                   | 3.10.0.4    | "rel-turing"     |        "4"         |
-|               | 1.6.7                   | 3.10.0.6    | "rel-turing"     |        "6"         |
-|               | 1.6.8                   | 3.10.0.7    | "rel-turing"     |        "7"         |
-
-**NOTE**: A call to `h2o_release_table()` will display the above table in your R console.
-
-To install any one of the above versions you can use the following code snippet:
-
-```r
-#We will install the H2O release `rel-turnbull` version `2` (H2O Version: 3.10.1.2)
-
-#The following two commands remove any previously installed H2O packages for R.
-if ("package:h2o" %in% search()) { detach("package:h2o", unload=TRUE) }
-if ("h2o" %in% rownames(installed.packages())) { remove.packages("h2o") }
-  
-# Next, we download packages that H2O depends on.
-if (! ("methods" %in% rownames(installed.packages()))) { install.packages("methods") }
-if (! ("statmod" %in% rownames(installed.packages()))) { install.packages("statmod") }
-if (! ("stats" %in% rownames(installed.packages()))) { install.packages("stats") }
-if (! ("graphics" %in% rownames(installed.packages()))) { install.packages("graphics") }
-if (! ("RCurl" %in% rownames(installed.packages()))) { install.packages("RCurl") }
-if (! ("jsonlite" %in% rownames(installed.packages()))) { install.packages("jsonlite") }
-if (! ("tools" %in% rownames(installed.packages()))) { install.packages("tools") }
-if (! ("utils" %in% rownames(installed.packages()))) { install.packages("utils") }
-  
-# Now we download, install and initialize the H2O package for R.
-install.packages("h2o", type="source", repos=(c("http://h2o-release.s3.amazonaws.com/h2o/rel-turnbull/2/R"))
-
-```
-
-The example below will use Spark version 2.0, Sparkling Water version 2.0.3, & H2O version 3.10.1.2.
 
 ## Installation
 
-The **rsparkling** R package requires the **sparklyr** and **h2o** R packages to run.
+The **rsparkling** R package requires the **sparklyr** and **h2o** R packages to run, so below we show how to install each of these packages.
 
 ### Install sparklyr
 
@@ -89,7 +40,53 @@ We recommend the latest stable version of [sparklyr](http://spark.rstudio.com/in
 install.packages("sparklyr")
 ```
 
+#### Install Spark via sparklyr
+
+The **sparklyr** package makes it easy to install any particular version of Spark.  Prior to installing **h2o** and **rsparkling**, the user will need to decide which version of Spark they would like to work with, as the remaining installation revolve around a particular major version of Spark (1.6 vs 2.0).  
+
+The following command will install Spark 2.0.0:
+
+``` r
+library(sparklyr)
+spark_install(version = "2.0.0")
+```
+
+
 ### Install h2o
+
+**rsparkling** currently requires that a certain version of H2O be used, depending on which major version of Spark is used, although this requirement will be relaxed in a future version.  Each release of Sparking Water is built from specific versions of H2O, and those versions are listed in the table below.
+
+**rsparkling** will automatically use the latest Sparkling Water based on the major Spark version provided. In this case, the H2O version required for the latest Sparkling Water is 3.10.3.2 for Spark 2.0 and 3.10.0.7 for Spark 1.6.
+
+Advanced users may want to choose a particular Sparking Water / H2O version (specific Sparkling Water versions must match specific Spark and H2O versions), however any 2.0 version of Sparkling Water will work with any minor version of Spark 2.0.  (similarly for 1.6).  Refer to integration info below.
+
+| Spark Version | Sparkling Water Version | H2O Version | H2O Release Name | H2O Release Patch Number |
+| ------------- | ----------------------- | ----------- | ---------------- | ------------------ |
+| 2.0.*         | 2.0.4                   | 3.10.3.2    | "rel-tverberg"   |        "2"         |
+|               | 2.0.3                   | 3.10.1.2    | "rel-turnbull"   |        "2"         |
+|               | 2.0.2                   | 3.10.0.10   | "rel-turing"     |        "10"        |
+|               | 2.0.1                   | 3.10.0.10   | "rel-turing"     |        "10"        |                  
+|               | 2.0.0                   | 3.10.0.7    | "rel-turing"     |        "7"         |
+|               |                         |             |                  |                    |
+| 1.6.*         | 1.6.8                   | 3.10.0.7    | "rel-turing"     |        "7"         |
+|               | 1.6.7                   | 3.10.0.6    | "rel-turing"     |        "6"         |
+|               | 1.6.6                   | 3.10.0.4    | "rel-turing"     |        "4"         |
+|               | 1.6.5                   | 3.8.2.6     | "rel-turchin"    |        "6"         |
+|               | 1.6.4                   | 3.8.2.4     | "rel-turchin"    |        "4"         |
+|               | 1.6.3                   | 3.8.2.3     | "rel-turchin"    |        "3"         |
+|               | 1.6.2                   | 3.8.1.3     | "rel-turan"      |        "3"         |
+|               | 1.6.1                   | 3.8.1.3     | "rel-turan"      |        "3"         |
+
+
+**NOTE**: A call to `h2o_release_table()` will display the above table in your R console and return a data.frame containing this information.
+
+#### Install h2o from S3
+
+To install any one of the above versions, we recommend using the H2O hosted repository on S3. In future versions of **rsparkling**, all Sparkling Water compatible versions of H2O will be available on CRAN and will be able to be easily installed using the [versions](https://CRAN.R-project.org/package=versions) R package using a command such as `versions::install("h2o", "3.8.1.3")`.
+
+At present, you can install the **h2o** R package using a repository URL comprised of the H2O version name and number.  Example: `http://h2o-release.s3.amazonaws.com/h2o/rel-tverberg/2/R`
+
+The R code below will install the most recent Spark 2.0 compatible release of H2O, which is "rel-tverberg" patch 2 (aka H2O version 3.10.3.2).
 
 ```r
 # The following two commands remove any previously installed H2O packages for R.
@@ -104,41 +101,30 @@ for (pkg in pkgs) {
 
 # Now we download, install, and initialize the H2O package for R. 
 # In this case we are using rel-turnbull 2 (3.10.1.2).
-install.packages("h2o", type = "source", repos = "http://h2o-release.s3.amazonaws.com/h2o/rel-turnbull/2/R")
+install.packages("h2o", type = "source", repos = "http://h2o-release.s3.amazonaws.com/h2o/rel-tverberg/2/R")
 ```
+
+
 
 ### Install rsparkling
 
-The latest version of rsparkling on CRAN can be installed as follows:
+The latest stable version of **rsparkling** on CRAN can be installed as follows:
 
 ```r
 install.packages("rsparkling")
 ```
 
-The latest stable version of rsparkling can be installed from the "stable" branch as follows:
-
-```r
-library(devtools)
-devtools::install_github("h2oai/rsparkling", ref = "stable")
-```  
-
-The development version can be installed from the "master" branch as follows:
+Alternatively, the development version can be installed from the "master" branch as follows:
 
 ```r
 library(devtools)
 devtools::install_github("h2oai/rsparkling", ref = "master")
 ``` 
 
-## Connecting to Spark
 
-If Spark needs to be installed, that can be done using the following sparklyr command:
+### Advanced Configuration
 
-``` r
-library(sparklyr)
-spark_install(version = "2.0.0")
-```
-
-The call to `options(rsparkling.sparklingwater.version = ...)` will globally set up a specific Sparkling Water version, which is the version of Sparkling Water that will be called in the `library(rsparkling)` command.
+If a particular version of Sparkling Water is desired/required (instead of the most recent 2.0 or 1.6 compatible version), you can specify a specific Sparkling Water version by making a call to `options(rsparkling.sparklingwater.version = ...)`, which will globally set up a specific Sparkling Water version.
 
 **NOTE**:
 If you do not set `rsparkling.sparklingwater.version`, then the latest version of Sparkling Water will be used based on the version of Spark installed (Spark version 2.0.* or 1.6.*)
@@ -146,17 +132,24 @@ If you do not set `rsparkling.sparklingwater.version`, then the latest version o
 **NOTE**: 
 If you would like to use a custom Sparkling Water jar, then you need to call the following:
 `options(rsparkling.sparklingwater.location = "path/to/sparkling_water.jar")`. 
-This will be the version of Sparkling Water that will be called in the `library(rsparkling)` command.
+
+#### Set Sparkling Water Version
+This will be the version of Sparkling Water that will be called in the `library(rsparkling)` command, and thus you should set the option before loading the library.
 
 ``` r
-options(rsparkling.sparklingwater.version = "2.0.3") # Using Sparkling Water 2.0.3
+options(rsparkling.sparklingwater.version = "2.0.1") # Using Sparkling Water 2.0.1
 library(rsparkling) 
 ```
 
-We can create a Spark connection as follows:
+
+
+
+## Spark Connection
+
+Once we've installed **rsparkling** and it's dependencies, the first step would be to create a Spark connection as follows:
 
 ``` r
-sc <- spark_connect(master = "local")
+sc <- spark_connect(master = "local", version = "2.0.0")
 ```
 
 ## H2O Context and Flow
