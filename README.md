@@ -12,10 +12,9 @@
 
 The **rsparkling** R package is an extension package for
 [sparklyr](http://spark.rstudio.com)
-that creates an R front-end for the 
-([Sparkling Water](https://mvnrepository.com/search?q=h2o+sparkling+water)
+that creates an R front-end for the [Sparkling Water](https://mvnrepository.com/search?q=h2o+sparkling+water)
 Spark package from
-[H2O](http://h2o.ai)).
+[H2O](http://h2o.ai).
 This provides an interface to H2O's high performance, distributed machine learning algorithms on Spark, using R.
 
 This package implements basic functionality (creating an H2OContext, showing the H2O Flow interface, and converting between Spark DataFrames and H2O Frames).  The main purpose of this package is to provide a connector between sparklyr and H2O's machine learning algorithms. 
