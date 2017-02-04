@@ -60,7 +60,7 @@ spark_install(version = "2.0.0")
 
 Advanced users may want to choose a particular Sparking Water / H2O version (specific Sparkling Water versions must match specific Spark and H2O versions), however any 2.0 version of Sparkling Water will work with any minor version of Spark 2.0.  (similarly for 1.6).  Refer to integration info below.
 
-| Spark Version | Sparkling Water Version | H2O Version | H2O Version Name | H2O Version Number |
+| Spark Version | Sparkling Water Version | H2O Version | H2O Release Name | H2O Release Patch Number |
 | ------------- | ----------------------- | ----------- | ---------------- | ------------------ |
 | 2.0.*         | 2.0.4                   | 3.10.3.2    | "rel-tverberg"   |        "2"         |
 |               | 2.0.3                   | 3.10.1.2    | "rel-turnbull"   |        "2"         |
@@ -84,9 +84,9 @@ Advanced users may want to choose a particular Sparking Water / H2O version (spe
 
 To install any one of the above versions, we recommend using the H2O hosted repository on S3. In future versions of **rsparkling**, all Sparkling Water compatible versions of H2O will be available on CRAN and will be able to be easily installed using the [versions](https://CRAN.R-project.org/package=versions) R package using a command such as `versions::install("h2o", "3.8.1.3")`.
 
-At present, you can install the **h2o** R package using a repository URL comprised of the H2O version name and number.  Example: `http://h2o-release.s3.amazonaws.com/h2o/rel-turnbull/2/R`
+At present, you can install the **h2o** R package using a repository URL comprised of the H2O version name and number.  Example: `http://h2o-release.s3.amazonaws.com/h2o/rel-tverberg/2/R`
 
-The R code below will install the most recent Spark 2.0 compatible version of H2O, which is "rel-turnbull" v2 (aka H2O 3.10.1.2).
+The R code below will install the most recent Spark 2.0 compatible release of H2O, which is "rel-tverberg" patch 2 (aka H2O version 3.10.3.2).
 
 ```r
 # The following two commands remove any previously installed H2O packages for R.
@@ -101,7 +101,7 @@ for (pkg in pkgs) {
 
 # Now we download, install, and initialize the H2O package for R. 
 # In this case we are using rel-turnbull 2 (3.10.1.2).
-install.packages("h2o", type = "source", repos = "http://h2o-release.s3.amazonaws.com/h2o/rel-turnbull/2/R")
+install.packages("h2o", type = "source", repos = "http://h2o-release.s3.amazonaws.com/h2o/rel-tverberg/2/R")
 ```
 
 
