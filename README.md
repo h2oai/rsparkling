@@ -100,7 +100,7 @@ for (pkg in pkgs) {
 }
 
 # Now we download, install, and initialize the H2O package for R. 
-# In this case we are using rel-turnbull 2 (3.10.1.2).
+# In this case we are using rel-tverberg 2 (3.10.3.2).
 install.packages("h2o", type = "source", repos = "http://h2o-release.s3.amazonaws.com/h2o/rel-tverberg/2/R")
 ```
 
