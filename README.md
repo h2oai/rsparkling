@@ -1,6 +1,6 @@
 # RSparkling
-
-[![Join the chat at https://gitter.im/h2oai/sparkling-water](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/h2oai/rsparkling?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Powered by H2O.ai](https://img.shields.io/badge/powered%20by-h2oai-yellow.svg)](https://github.com/h2oai/)
+[![Join the chat at https://gitter.im/h2oai/rsparkling](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/h2oai/rsparkling?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![][travis img]][travis]
 [![][license img]][license]
 [![CRAN](http://www.r-pkg.org/badges/version/rsparkling)](https://cran.r-project.org/package=rsparkling) [![Downloads](http://cranlogs.r-pkg.org/badges/rsparkling?color=brightgreen)](http://www.r-pkg.org/pkg/rsparkling)
