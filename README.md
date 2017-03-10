@@ -62,7 +62,10 @@ Advanced users may want to choose a particular Sparking Water / H2O version (spe
 
 | Spark Version | Sparkling Water Version | H2O Version | H2O Release Name | H2O Release Patch Number |
 | ------------- | ----------------------- | ----------- | ---------------- | ------------------ |
-| 2.0.*         | 2.0.4                   | 3.10.3.2    | "rel-tverberg"   |        "2"         |
+| 2.1.*         | 2.1.0                   | 3.10.3.2    | "rel-tverberg"   |        "2"         |
+|               |                         |             |                  |                    |
+| 2.0.*         | 2.0.5                   | 3.10.3.2    | "rel-tverberg"   |        "2"         |
+|               | 2.0.4                   | 3.10.3.2    | "rel-tverberg"   |        "2"         |
 |               | 2.0.3                   | 3.10.1.2    | "rel-turnbull"   |        "2"         |
 |               | 2.0.2                   | 3.10.0.10   | "rel-turing"     |        "10"        |
 |               | 2.0.1                   | 3.10.0.10   | "rel-turing"     |        "10"        |                  
