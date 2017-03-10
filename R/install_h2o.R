@@ -4,17 +4,23 @@
 #' @export
 h2o_release_table <- function(){
   
+  #Spark 2.1
+  release_spark_2_1 <- data.frame(Spark_Version = c("2.1"), 
+                                Sparkling_Water_Version = rev(c("2.1.0")),
+                                H2O_Version = rev(c("3.10.3.2")),
+                                H2O_Release_Name = rev(c("rel-tverberg")),
+                                H2O_Release_Patch_Number = rev(c("2")))
   #Spark 2.0
   release_spark_2 <- data.frame(Spark_Version = c("2.0"), 
-                              Sparkling_Water_Version = rev(c("2.0.0","2.0.1","2.0.2","2.0.3", "2.0.4")),
-                              H2O_Version = rev(c("3.10.0.7","3.10.0.10","3.10.0.10","3.10.1.2", "3.10.3.2")),
-                              H2O_Release_Name = rev(c("rel-turing","rel-turing","rel-turing","rel-turnbull","rel-tverberg")),
-                              H2O_Release_Patch_Number = rev(c("7","10","10","2","2")))
+                              Sparkling_Water_Version = rev(c("2.0.0","2.0.1","2.0.2","2.0.3", "2.0.4","2.0.5")),
+                              H2O_Version = rev(c("3.10.0.7","3.10.0.10","3.10.0.10","3.10.1.2", "3.10.3.2","3.10.3.2")),
+                              H2O_Release_Name = rev(c("rel-turing","rel-turing","rel-turing","rel-turnbull","rel-tverberg","rel-tverberg")),
+                              H2O_Release_Patch_Number = rev(c("7","10","10","2","2","2")))
   #Spark 1.6
   release_spark_1_6 <- data.frame(Spark_Version = c("1.6"), 
                                 Sparkling_Water_Version = rev(c("1.6.1","1.6.2","1.6.3","1.6.4","1.6.5","1.6.6","1.6.7","1.6.8")),
                                 H2O_Version = rev(c("3.8.1.3","3.8.1.3","3.8.2.3","3.8.2.4","3.8.2.6","3.10.0.4","3.10.0.6","3.10.0.7")),
                                 H2O_Release_Name = rev(c("rel-turan","rel-turan","rel-turchin","rel-turchin","rel-turchin","rel-turing","rel-turing","rel-turing")),
                                 H2O_Release_Patch_Number = rev(c("3","3","3","4","6","4","6","7")))
-  return(rbind(release_spark_2,release_spark_1_6))
+  return(rbind(release_spark_2_1,release_spark_2,release_spark_1_6))
 }
