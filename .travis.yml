@@ -6,5 +6,10 @@ cache: packages
 
 r_github_packages:
   - hadley/devtools
+
 env:
-- NOT_CRAN="true"
+  global:
+   -  NOT_CRAN="true"
+  matrix:
+    - SPARKLINGWATER_VERSION="2.0.5"
+    - SPARKLINGWATER_VERSION="1.6.8"
