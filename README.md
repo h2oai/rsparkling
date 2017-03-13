@@ -143,9 +143,28 @@ This will be the version of Sparkling Water that will be called in the `library(
 options(rsparkling.sparklingwater.version = "2.0.1") # Using Sparkling Water 2.0.1
 library(rsparkling) 
 ```
+#### Note: The previous command requires access to the internet
 
+**If you are not connected to the internet/behind a firewall you would need to do the following:** 
 
+1. Download the Sparkling Water jar of your choice based on the integration table above. To do this go to the following link where `[SW Major Version]` is the major version of Sparkling Water you wish to use, i.e., `2.0` and `[SW Minor Version]` is the minor version of Sparkling Water you wish to use, i.e., `5`.
 
+	``` url
+	http://h2o-release.s3.amazonaws.com/sparkling-water/rel-[SW Major Version]/[SW Minor Version]/index.html
+	```
+2. Click the `DOWNLOAD SPARKLING WATER` tab, which will download a `.zip` file of Sparkling Water.
+3. Run the following command to unzip the folder:
+
+	```
+	unzip sparkling-water-[SW Major Version].[SW Minor Version].zip
+	``` 
+4. The path to the Sparkling Water jar file is: `sparkling-water-[SW Major Version].[SW Minor Version]/assembly/build/libs/sparkling-water-assembly_*.jar`. 
+5. The following command will now call the Sparkling Water jar:
+
+	``` r
+	options(rsparkling.sparklingwater.location = "path/to/sparkling-water-assembly_*.jar"))
+	library(rsparkling) 
+	```
 
 ## Spark Connection
 
