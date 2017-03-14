@@ -51,6 +51,17 @@ library(sparklyr)
 spark_install(version = "2.0.0")
 ```
 
+#### Note: The previous command requires access to the internet
+
+**If you are not connected to the internet/behind a firewall you would need to do the following:** 
+
+1. Download [Spark](https://spark.apache.org/downloads.html) (Pick the major version that corresponds to Sparkling Water)
+2. Unzip Spark files
+3. Set the `SPARK_HOME` environment variable to the location of the downloaded Spark folder in R as follows:
+	
+	```
+	Sys.setenv(SPARK_HOME="/path/to/spark")
+	```
 
 ### Install h2o
 
@@ -173,6 +184,24 @@ Once we've installed **rsparkling** and it's dependencies, the first step would 
 ``` r
 sc <- spark_connect(master = "local", version = "2.0.0")
 ```
+#### Note: The previous command requires access to the internet
+
+**If you are not connected to the internet/behind a firewall you would need to do the following:** 
+
+1. Download [Spark](https://spark.apache.org/downloads.html) (Pick the major version that corresponds to Sparkling Water)
+2. Unzip Spark files
+3. Set the `SPARK_HOME` environment variable to the location of the downloaded Spark folder in R as follows:
+	
+	```
+	Sys.setenv(SPARK_HOME="/path/to/spark")
+	```
+	
+4. Note, the `spark_home` parameter in `spark_connect` defaults to the `SPARK_HOME` environment variable. If `SPARK_HOME` is defined it will be always be used unless the `version` parameter is specified to force the use of a locally installed version.
+5. Run the following:
+
+	``` r
+	sc <- spark_connect(master = "local")
+	```
 
 ## H2O Context and Flow
 
