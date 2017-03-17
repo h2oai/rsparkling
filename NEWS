@@ -1,9 +1,0 @@
-# News for the rsparkling package. #
-
-rsparkling 0.1.1 (2017-02-23)
------------------
-* Patch fix: Set `startH2O` to FALSE in `h2o.init()` command to ensure R only starts H2O if no other H2O instance is detected. This is mainly useful if a user is in a cluster environment(Hadoop,EMR,etc.).
-
-rsparkling 0.1.0 (2017-01-24)
------------------
-* Initial release. 
