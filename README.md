@@ -26,6 +26,7 @@ This package implements basic functionality (creating an H2OContext, showing the
 * [Main documentation site for Sparkling Water (and all H2O software projects)](http://docs.h2o.ai)
 * [H2O.ai website](http://h2o.ai)
 * Code for the example shown below is [here](https://github.com/h2oai/rsparkling/blob/master/inst/examples/example_rsparkling.R).
+* Troubleshooting rsparkling on Windows is [here](https://github.com/h2oai/rsparkling/wiki/RSparkling-on-Windows)
 
 
 ## Installation
