@@ -6,9 +6,9 @@ h2o_release_table <- function(){
   
   #Spark 2.1
   release_spark_2_1 <- data.frame(Spark_Version = c("2.1"), 
-                                Sparkling_Water_Version = rev(c("2.1.0")),
-                                H2O_Version = rev(c("3.10.3.2")),
-                                H2O_Release_Name = rev(c("rel-tverberg")),
+                                Sparkling_Water_Version = rev(c("2.1.0","2.1.1","2.1.2")),
+                                H2O_Version = rev(c("3.10.3.2","3.10.4.2","3.10.4.2")),
+                                H2O_Release_Name = rev(c("rel-tverberg","rel-ueno", "rel-ueno")),
                                 H2O_Release_Patch_Number = rev(c("2")))
   #Spark 2.0
   release_spark_2 <- data.frame(Spark_Version = c("2.0"), 
