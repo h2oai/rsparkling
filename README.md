@@ -5,6 +5,7 @@
 [![][license img]][license]
 [![CRAN](http://www.r-pkg.org/badges/version/rsparkling)](https://cran.r-project.org/package=rsparkling) [![Downloads](http://cranlogs.r-pkg.org/badges/rsparkling?color=brightgreen)](http://www.r-pkg.org/pkg/rsparkling)
 [![Powered by H2O.ai](https://img.shields.io/badge/powered%20by-h2oai-yellow.svg)](https://github.com/h2oai/)
+
 [travis]:https://travis-ci.org/h2oai/rsparkling
 [travis img]:https://travis-ci.org/h2oai/rsparkling.svg?branch=master
 
