@@ -81,7 +81,10 @@ Advanced users may want to choose a particular Sparking Water / H2O version (spe
 |               | 2.1.1                   | 3.10.4.2    | "rel-ueno"       |        "2"         |
 |               | 2.1.0                   | 3.10.3.2    | "rel-tverberg"   |        "2"         |
 |               |                         |             |                  |                    |
-| 2.0.*         | 2.0.5                   | 3.10.3.2    | "rel-tverberg"   |        "2"         |
+| 2.0.*         | 2.0.8                   | 3.10.4.5    | "rel-ueno"       |        "5"         |
+|               | 2.0.7                   | 3.10.4.3    | "rel-ueno"       |        "3"         |
+|               | 2.0.6                   | 3.10.4.2    | "rel-ueno"       |        "2"         |
+|               | 2.0.5                   | 3.10.3.2    | "rel-tverberg"   |        "2"         |
 |               | 2.0.4                   | 3.10.3.2    | "rel-tverberg"   |        "2"         |
 |               | 2.0.3                   | 3.10.1.2    | "rel-turnbull"   |        "2"         |
 |               | 2.0.2                   | 3.10.0.10   | "rel-turing"     |        "10"        |
