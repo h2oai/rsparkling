@@ -71,7 +71,7 @@ library(readr)
 library(sparklyr)
 library(h2o)
 library(shinythemes)
-
+library(nycflights13)
 #Upload data
 flights_tbl <- copy_to(sc, nycflights13::flights, "flights")
 airports_tbl <- copy_to(sc, nycflights13::airports, "airports")
@@ -268,4 +268,5 @@ server <- function(input, output) {
 shinyApp(ui = ui, server = server)
 
 #Disconnect from Spark and end session
+#h2o.shutdown(prompt=FALSE)
 #spark_disconnect(sc)
