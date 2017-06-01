@@ -113,7 +113,7 @@ Advanced users may want to choose a particular Sparking Water / H2O version (spe
 
 #### Install h2o from S3
 
-To install any one of the above versions, we recommend using the H2O hosted repository on S3. In future versions of **rsparkling**, all Sparkling Water compatible versions of H2O will be available on CRAN and will be able to be easily installed using the [versions](https://CRAN.R-project.org/package=versions) R package using a command such as `versions::install("h2o", "3.8.1.3")`.
+To install any one of the above versions, we recommend using the H2O hosted repository on S3. In future versions of **rsparkling**, all Sparkling Water compatible versions of H2O will be available on CRAN and will be able to be easily installed using the [versions](https://CRAN.R-project.org/package=versions) R package using a command such as `versions::install.packages("h2o", "3.8.1.3")`.
 
 At present, you can install the **h2o** R package using a repository URL comprised of the H2O version name and number.  Example: `http://h2o-release.s3.amazonaws.com/h2o/rel-tverberg/2/R`
 
@@ -201,6 +201,8 @@ Once we've installed **rsparkling** and it's dependencies, the first step would 
 ``` r
 sc <- spark_connect(master = "local", version = "2.0.0")
 ```
+#### Note: Please be sure to set `version` to the proper Spark version utilized by your version of Sparkling Water in `spark_connect()`
+
 #### Note: The previous command requires access to the internet
 
 **If you are not connected to the internet/behind a firewall you would need to do the following:** 
