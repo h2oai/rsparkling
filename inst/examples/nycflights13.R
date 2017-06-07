@@ -38,8 +38,7 @@
 #install.packages("sparklyr")
 
 #The latest stable version of rsparkling can be installed as follows:
-#library(devtools)
-#devtools::install_github("h2oai/sparkling-water", ref = "master", subdir = "/r/rsparkling")
+#install.packages("rsparkling")
 
 ##############################################################################################################
 #If Spark needs to be installed, that can be done using the following sparklyr command:
