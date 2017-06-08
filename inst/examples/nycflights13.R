@@ -55,6 +55,9 @@ sc <- spark_connect(master = "local")
 #Let's inspect the H2OContext for our Spark connection:
 h2o_context(sc,FALSE)
 
+#Open Spark UI
+spark_web(sc)
+
 #We can also view the H2O Flow web UI:
 h2o_flow(sc,FALSE)
 ##############################################################################################################
