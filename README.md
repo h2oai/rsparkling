@@ -75,7 +75,8 @@ Advanced users may want to choose a particular Sparking Water / H2O version (spe
 
 | Spark Version | Sparkling Water Version | H2O Version | H2O Release Name | H2O Release Patch Number |
 | ------------- | ----------------------- | ----------- | ---------------- | ------------------ |
-| 2.1.*         | 2.1.8                   | 3.10.4.8    | "rel-ueno"       |        "8"         |
+| 2.1.*         | 2.1.9                   | 3.10.5.1    | "rel-vajda"      |        "1"         |
+|               | 2.1.8                   | 3.10.4.8    | "rel-ueno"       |        "8"         |
 |               | 2.1.7                   | 3.10.4.7    | "rel-ueno"       |        "7"         |
 |               | 2.1.6                   | 3.10.4.7    | "rel-ueno"       |        "7"         |
 |               | 2.1.5                   | 3.10.4.6    | "rel-ueno"       |        "6"         |
@@ -85,7 +86,8 @@ Advanced users may want to choose a particular Sparking Water / H2O version (spe
 |               | 2.1.1                   | 3.10.4.2    | "rel-ueno"       |        "2"         |
 |               | 2.1.0                   | 3.10.3.2    | "rel-tverberg"   |        "2"         |
 |               |                         |             |                  |                    |
-| 2.0.*         | 2.0.9                   | 3.10.4.8    | "rel-ueno"       |        "8"         |
+| 2.0.*         | 2.0.10                  | 3.10.5.1    | "rel-vajda"      |        "1"         |
+|               | 2.0.9                   | 3.10.4.8    | "rel-ueno"       |        "8"         |
 |               | 2.0.8                   | 3.10.4.5    | "rel-ueno"       |        "5"         |
 |               | 2.0.7                   | 3.10.4.3    | "rel-ueno"       |        "3"         |
 |               | 2.0.6                   | 3.10.4.2    | "rel-ueno"       |        "2"         |
