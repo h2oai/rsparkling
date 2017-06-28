@@ -192,7 +192,7 @@ library(rsparkling)
 5. The following command will now call the Sparkling Water jar:
 
 	``` r
-	options(rsparkling.sparklingwater.location = "path/to/sparkling-water-assembly_*.jar"))
+	options(rsparkling.sparklingwater.location = "path/to/sparkling-water-assembly_*.jar")
 	library(rsparkling) 
 	```
 
