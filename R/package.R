@@ -89,7 +89,8 @@ To update your h2o R package, copy/paste the following commands and then restart
     spark_dependency(packages = c(
       sprintf("ai.h2o:sparkling-water-core_%s:%s", scala_version, sw_version),
       sprintf("ai.h2o:sparkling-water-ml_%s:%s", scala_version, sw_version),
-      sprintf("ai.h2o:sparkling-water-repl_%s:%s", scala_version, sw_version)
+      sprintf("ai.h2o:sparkling-water-repl_%s:%s", scala_version, sw_version),
+      sprintf("no.priv.garshol.duke:duke:1.2")
     ))
   }
 }
