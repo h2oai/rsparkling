@@ -1,5 +1,14 @@
 **If you are viewing this file on CRAN, please check latest news on GitHub [here](https://github.com/h2oai/rsparkling/blob/master/NEWS.md).**
 
+rsparkling 0.2.1 (2017-06-30)
+-----------------
+* Patch fix: 
+	* Add duke dependency(`no.priv.garshol.duke:duke:1.2`) to `spark_dependency()` in `package.R`, which will 	  help loading the latest H2O (>= 3.10.5.2).
+* Notes:
+	* Update to [nycflights13.R example](https://github.com/h2oai/rsparkling/blob/master/inst/examples/nycflights13.R)
+	* Added latest `rsparkling` integration information [here](https://github.com/h2oai/rsparkling#install-h2o)
+	* Updates to `rsparkling`[README](https://github.com/h2oai/rsparkling/blob/master/README.md)
+	
 rsparkling 0.2.0 (2017-03-15)
 -----------------
 * New Features: 
