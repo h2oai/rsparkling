@@ -19,8 +19,9 @@ Spark package from
 [H2O](http://h2o.ai).
 This provides an interface to H2O's high performance, distributed machine learning algorithms on Spark, using R.
 
-This package implements basic functionality (creating an H2OContext, showing the H2O Flow interface, and converting between Spark DataFrames and H2O Frames).  The main purpose of this package is to provide a connector between sparklyr and H2O's machine learning algorithms. 
+This package implements basic functionality (creating an H2OContext, showing the H2O Flow interface, and converting between Spark DataFrames and H2O Frames).  The main purpose of this package is to provide a connector between sparklyr and H2O's machine learning algorithms.
 
+The **rsparkling** package uses **sparklyr** for Spark job deployment and initialization of Sparkling Water. After that, user can use the regular **h2o** R package for modeling.
 
 ## Additional Resources
 
