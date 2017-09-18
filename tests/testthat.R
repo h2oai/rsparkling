@@ -8,8 +8,9 @@ library(rsparkling)
 options(rsparkling.sparklingwater.version = Sys.getenv("SPARKLINGWATER_VERSION","2.0.5"))
 
 sw_version <- getOption("rsparkling.sparklingwater.version", default = NULL)
-
-if(as.package_version(sw_version)$major == "2" && as.package_version(sw_version)$minor == "1"){
+if(as.package_version(sw_version)$major == "2" && as.package_version(sw_version)$minor == "2"){
+  options(rsparkling.spark.version =  "2.2.0") #Use latest Spark 2.1.*
+}else if(as.package_version(sw_version)$major == "2" && as.package_version(sw_version)$minor == "1"){
   options(rsparkling.spark.version =  "2.1.0") #Use latest Spark 2.1.*
 }else if(as.package_version(sw_version)$major == "2"){
   options(rsparkling.spark.version =  "2.0.2") #Use latest Spark 2.0.*

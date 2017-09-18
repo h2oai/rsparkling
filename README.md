@@ -76,7 +76,12 @@ Advanced users may want to choose a particular Sparking Water / H2O version (spe
 
 | Spark Version | Sparkling Water Version | H2O Version | H2O Release Name | H2O Release Patch Number |
 | ------------- | ----------------------- | ----------- | ---------------- | ------------------ |
-| 2.1.*         | 2.1.10                  | 3.10.5.2    | "rel-vajda"      |        "2"         |
+| 2.2.*         | 2.2.0                   | 3.14.0.2    | "rel-weierstrass"|        "2"         |
+| 2.1.*         | 2.1.14                  | 3.14.0.2    | "rel-weierstrass"|        "2"         |
+|               | 2.1.13                  | 3.10.5.4    | "rel-vajda"      |        "4"         |
+|               | 2.1.12                  | 3.10.5.4    | "rel-vajda"      |        "4"         |
+|               | 2.1.11                  | 3.10.5.3    | "rel-vajda"      |        "3"         |
+|               | 2.1.10                  | 3.10.5.2    | "rel-vajda"      |        "2"         |
 |               | 2.1.9                   | 3.10.5.1    | "rel-vajda"      |        "1"         |
 |               | 2.1.8                   | 3.10.4.8    | "rel-ueno"       |        "8"         |
 |               | 2.1.7                   | 3.10.4.7    | "rel-ueno"       |        "7"         |
@@ -88,7 +93,11 @@ Advanced users may want to choose a particular Sparking Water / H2O version (spe
 |               | 2.1.1                   | 3.10.4.2    | "rel-ueno"       |        "2"         |
 |               | 2.1.0                   | 3.10.3.2    | "rel-tverberg"   |        "2"         |
 |               |                         |             |                  |                    |
-| 2.0.*         | 2.0.11                  | 3.10.5.2    | "rel-vajda"      |        "2"         |
+| 2.0.*         | 2.0.15                  | 3.14.0.2    | "rel-weierstrass"|        "2"         |
+|               | 2.0.14                  | 3.10.5.4    | "rel-vajda"      |        "4"         |
+|               | 2.0.13                  | 3.10.5.4    | "rel-vajda"      |        "4"         |
+|               | 2.0.12                  | 3.10.5.4    | "rel-vajda"      |        "4"         |
+|               | 2.0.11                  | 3.10.5.2    | "rel-vajda"      |        "2"         |
 |               | 2.0.10                  | 3.10.5.1    | "rel-vajda"      |        "1"         |
 |               | 2.0.9                   | 3.10.4.8    | "rel-ueno"       |        "8"         |
 |               | 2.0.8                   | 3.10.4.5    | "rel-ueno"       |        "5"         |
@@ -101,7 +110,8 @@ Advanced users may want to choose a particular Sparking Water / H2O version (spe
 |               | 2.0.1                   | 3.10.0.10   | "rel-turing"     |        "10"        |                  
 |               | 2.0.0                   | 3.10.0.7    | "rel-turing"     |        "7"         |
 |               |                         |             |                  |                    |
-| 1.6.*         | 1.6.12                  | 3.10.5.2    | "rel-vajda"      |        "2"         |
+| 1.6.*         | 1.6.13                  | 3.14.0.2    | "rel-weierstrass"|        "2"         |
+|               | 1.6.12                  | 3.10.5.2    | "rel-vajda"      |        "2"         |
 |               | 1.6.11                  | 3.10.4.8    | "rel-ueno"       |        "8"         |
 |               | 1.6.10                  | 3.10.4.5    | "rel-ueno"       |        "5"         |
 |               | 1.6.9                   | 3.10.4.3    | "rel-ueno"       |        "3"         |

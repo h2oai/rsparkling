@@ -8,8 +8,8 @@ test_that("Test transformation from h2o frame to data frame", {
   hf <- as_h2o_frame(sc, sdf, strict_version_check=FALSE)
   sdf2 <- as_spark_dataframe(sc, hf, strict_version_check=FALSE)
 
-  expect_equal(as.data.frame(tally(sdf2))$n, nrow(hf))
-  expect_equal(ncol(sdf2), ncol(hf))
+  expect_equal(sdf_nrow(sdf2), nrow(hf))
+  expect_equal(sdf_ncol(sdf2), ncol(hf))
   expect_equal(colnames(sdf2), colnames(hf))
 })
 
@@ -77,8 +77,8 @@ test_that("Test transformation from dataframe to h2o frame", {
   mtcars_tbl <- copy_to(sc, mtcars, overwrite = TRUE)
   mtcars_hf <- as_h2o_frame(sc, mtcars_tbl, strict_version_check=FALSE)
   
-  expect_equal(as.data.frame(tally(mtcars_tbl))$n, nrow(mtcars_hf))
-  expect_equal(ncol(mtcars_tbl), ncol(mtcars_hf))
+  expect_equal(sdf_nrow(mtcars_tbl), nrow(mtcars_hf))
+  expect_equal(sdf_ncol(mtcars_tbl), ncol(mtcars_hf))
   expect_equal(colnames(mtcars_tbl), colnames(mtcars_hf))
 })
 

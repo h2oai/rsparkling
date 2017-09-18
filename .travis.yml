@@ -4,12 +4,17 @@ language: r
 sudo: false
 cache: packages
 
+jdk:
+ - oraclejdk8
+
 r_github_packages:
-  - hadley/devtools
+  - rstudio/sparklyr@2c59696
 
 env:
   global:
    -  NOT_CRAN="true"
   matrix:
-    - SPARKLINGWATER_VERSION="2.0.5"
-    - SPARKLINGWATER_VERSION="1.6.8"
+    - SPARKLINGWATER_VERSION="2.2.0"
+    - SPARKLINGWATER_VERSION="2.1.14"
+    - SPARKLINGWATER_VERSION="2.0.15"
+    - SPARKLINGWATER_VERSION="1.6.13"
