@@ -1,6 +1,6 @@
 Package: rsparkling
 Title: R Interface for H2O Sparkling Water
-Version: 0.2.1
+Version: 0.2.2
 Authors@R: c(
   person("JJ", "Allaire", role = c("aut"), email = "jj@rstudio.com"),
   person("Erin", "LeDell", role = c("aut"), email = "erin@h2o.ai"),

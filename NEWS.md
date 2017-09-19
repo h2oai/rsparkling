@@ -1,5 +1,13 @@
 **If you are viewing this file on CRAN, please check latest news on GitHub [here](https://github.com/h2oai/rsparkling/blob/master/NEWS.md).**
 
+rsparkling 0.2.2 (2017-09-18)
+-----------------
+* Add support for Spark 2.2.* and Sparkling Water 2.2.*
+* Added example of using Sparkling Water w/ YARN [here](https://github.com/h2oai/rsparkling/blob/master/inst/examples/using-sparkling-water-in-YARN.Rmd)
+* Notes:
+	* Added latest `rsparkling` integration information [here](https://github.com/h2oai/rsparkling#install-h2o)
+	* Updates to `rsparkling`[README](https://github.com/h2oai/rsparkling/blob/master/README.md)
+
 rsparkling 0.2.1 (2017-06-30)
 -----------------
 * Patch fix: 
