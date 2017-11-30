@@ -76,8 +76,14 @@ Advanced users may want to choose a particular Sparking Water / H2O version (spe
 
 | Spark Version | Sparkling Water Version | H2O Version | H2O Release Name | H2O Release Patch Number |
 | ------------- | ----------------------- | ----------- | ---------------- | ------------------ |
-| 2.2.*         | 2.2.0                   | 3.14.0.2    | "rel-weierstrass"|        "2"         |
-| 2.1.*         | 2.1.14                  | 3.14.0.2    | "rel-weierstrass"|        "2"         |
+| 2.2.*         | 2.2.3                   | 3.16.0.1    | "rel-wheeler"    |        "1"
+|               | 2.2.2                   | 3.14.0.7    | "rel-weierstrass"|        "7"
+|               | 2.2.1                   | 3.14.0.6    | "rel-weierstrass"|        "6" 
+|               | 2.2.0                   | 3.14.0.2    | "rel-weierstrass"|        "2"        |
+| 2.1.*         | 2.1.17                  | 3.16.0.1    | "rel-wheeler"    |        "1"
+|               | 2.1.16                  | 3.14.0.7    | "rel-weierstrass"|        "7"
+|               | 2.1.15                  | 3.14.0.6    | "rel-weierstrass"|        "6"
+|               | 2.1.14                  | 3.14.0.2    | "rel-weierstrass"|        "2"         |
 |               | 2.1.13                  | 3.10.5.4    | "rel-vajda"      |        "4"         |
 |               | 2.1.12                  | 3.10.5.4    | "rel-vajda"      |        "4"         |
 |               | 2.1.11                  | 3.10.5.3    | "rel-vajda"      |        "3"         |
@@ -93,7 +99,10 @@ Advanced users may want to choose a particular Sparking Water / H2O version (spe
 |               | 2.1.1                   | 3.10.4.2    | "rel-ueno"       |        "2"         |
 |               | 2.1.0                   | 3.10.3.2    | "rel-tverberg"   |        "2"         |
 |               |                         |             |                  |                    |
-| 2.0.*         | 2.0.15                  | 3.14.0.2    | "rel-weierstrass"|        "2"         |
+| 2.0.*         | 2.0.18                  | 3.16.0.1    | "rel-wheeler"    |        "1"
+|               | 2.0.17                  | 3.14.0.7    | "rel-weierstrass"|        "7"
+|               | 2.0.16                  | 3.14.0.6    | "rel-weierstrass"|        "6"
+|               | 2.0.15                  | 3.14.0.2    | "rel-weierstrass"|        "2"         |
 |               | 2.0.14                  | 3.10.5.4    | "rel-vajda"      |        "4"         |
 |               | 2.0.13                  | 3.10.5.4    | "rel-vajda"      |        "4"         |
 |               | 2.0.12                  | 3.10.5.4    | "rel-vajda"      |        "4"         |
