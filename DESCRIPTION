@@ -20,7 +20,7 @@ License: Apache License 2.0 | file LICENSE
 Encoding: UTF-8
 LazyData: true
 NeedsCompilation: no
-SystemRequirements: Java (>= 1.6)
+SystemRequirements: Java (>6)
 URL: https://github.com/h2oai/rsparkling
 BugReports: http://jira.h2o.ai
 RoxygenNote: 5.0.1
