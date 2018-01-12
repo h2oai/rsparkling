@@ -25,8 +25,8 @@ spark_dependencies <- function(spark_version, scala_version, ...) {
       latest <- read.table("http://s3.amazonaws.com/h2o-release/sparkling-water/rel-2.2/latest")
       sw_version <- sprintf("2.2.%s",latest)
       message(sprintf("Spark version %s detected. Will call latest Sparkling Water version %s",spark_version,sw_version))
-      if (packageVersion("h2o") != "3.14.0.2") {
-        message(paste0('\nDetected H2O version ', packageVersion("h2o"),'. Please install H2O version 3.14.0.2, which is compliant with the latest Sparkling Water version for Spark 2.2.* -> Sparkling Water version ', sw_version,'\n
+      if (packageVersion("h2o") != "3.16.0.2") {
+        message(paste0('\nDetected H2O version ', packageVersion("h2o"),'. Please install H2O version 3.16.0.2, which is compliant with the latest Sparkling Water version for Spark 2.2.* -> Sparkling Water version ', sw_version,'\n
                        To update your h2o R package, copy/paste the following commands and then restart your R session:
                        
                        detach("package:rsparkling", unload = TRUE)
@@ -41,8 +41,8 @@ spark_dependencies <- function(spark_version, scala_version, ...) {
       latest <- read.table("http://s3.amazonaws.com/h2o-release/sparkling-water/rel-2.1/latest")
       sw_version <- sprintf("2.1.%s",latest)
       message(sprintf("Spark version %s detected. Will call latest Sparkling Water version %s",spark_version,sw_version))
-      if (packageVersion("h2o") != "3.14.0.2") {
-        message(paste0('\nDetected H2O version ', packageVersion("h2o"),'. Please install H2O version 3.14.0.2, which is compliant with the latest Sparkling Water version for Spark 2.1.* -> Sparkling Water version ', sw_version,'\n
+      if (packageVersion("h2o") != "3.16.0.2") {
+        message(paste0('\nDetected H2O version ', packageVersion("h2o"),'. Please install H2O version 3.16.0.2, which is compliant with the latest Sparkling Water version for Spark 2.1.* -> Sparkling Water version ', sw_version,'\n
 To update your h2o R package, copy/paste the following commands and then restart your R session:
                        
   detach("package:rsparkling", unload = TRUE)
@@ -56,8 +56,8 @@ To update your h2o R package, copy/paste the following commands and then restart
       latest <- read.table("http://s3.amazonaws.com/h2o-release/sparkling-water/rel-2.0/latest")
       sw_version <- sprintf("2.0.%s",latest)
       message(sprintf("Spark version %s detected. Will call latest Sparkling Water version %s",spark_version,sw_version))
-      if (packageVersion("h2o") != "3.14.0.2") {
-        message(paste0('\nDetected H2O version ', packageVersion("h2o"),'. Please install H2O version 3.14.0.2, which is compliant with the latest Sparkling Water version for Spark 2.0.* ->  Sparkling Water version ', sw_version,'\n
+      if (packageVersion("h2o") != "3.16.0.2") {
+        message(paste0('\nDetected H2O version ', packageVersion("h2o"),'. Please install H2O version 3.16.0.2, which is compliant with the latest Sparkling Water version for Spark 2.0.* ->  Sparkling Water version ', sw_version,'\n
 To update your h2o R package, copy/paste the following commands and then restart your R session:
 
   detach("package:rsparkling", unload = TRUE)
@@ -71,8 +71,8 @@ To update your h2o R package, copy/paste the following commands and then restart
       latest <- read.table("http://s3.amazonaws.com/h2o-release/sparkling-water/rel-1.6/latest")
       sw_version <- sprintf("1.6.%s",latest) 
       message(sprintf("Spark version %s detected. Will call latest Sparkling Water version %s",spark_version,sw_version))
-      if (packageVersion("h2o") != "3.14.0.2"){
-        message(paste0('\nDetected H2O version ', packageVersion("h2o"),'. Please install H2O version 3.14.0.2, which is compliant with the latest Sparkling Water version for Spark 1.6.* ->  Sparkling Water version ', sw_version,'\n
+      if (packageVersion("h2o") != "3.16.0.2"){
+        message(paste0('\nDetected H2O version ', packageVersion("h2o"),'. Please install H2O version 3.16.0.2, which is compliant with the latest Sparkling Water version for Spark 1.6.* ->  Sparkling Water version ', sw_version,'\n
 To update your h2o R package, copy/paste the following commands and then restart your R session:
 
   detach("package:rsparkling", unload = TRUE)
