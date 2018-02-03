@@ -1,11 +1,12 @@
 **If you are viewing this file on CRAN, please check latest news on GitHub [here](https://github.com/h2oai/rsparkling/blob/master/NEWS.md).**
 
-rsparkling 0.2.3 (2018-01-12)
+rsparkling 0.2.3 (2018-02-02)
 -----------------
-* Updated h2o-3 version to 3.16.0.2 if user does not provide info about Sparkling Water [here](https://github.com/h2oai/rsparkling/commit/f51297fa6feda3b6584cb80aad98ac717d3669fe)
+* Updated h2o-3 version to 3.16.0.4 if user does not provide specific Sparkling Water install information.
 * Changed Java version in DESCRIPTION file [here](https://github.com/h2oai/rsparkling/commit/7890fa5bba87882b15f9b823195e50f7006667ad)
 * Notes:
 	* Added latest `rsparkling` integration information [here](https://github.com/h2oai/rsparkling#install-h2o)
+	* Update `h2o_release_table` function [here](https://github.com/h2oai/rsparkling/blob/master/R/install_h2o.R)
 	* Updates to `rsparkling` [README](https://github.com/h2oai/rsparkling/blob/master/README.md)
 
 rsparkling 0.2.2 (2017-09-18)

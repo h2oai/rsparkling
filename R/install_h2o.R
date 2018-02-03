@@ -4,39 +4,76 @@
 #' @export
 h2o_release_table <- function(){
   
-  #Spark 2.2
-  release_spark_2_2 <- data.frame(Spark_Version = c("2.2"), 
-                                  Sparkling_Water_Version = rev(c("2.2.0")),
-                                  H2O_Version = rev(c("3.14.0.2")),
-                                  H2O_Release_Name = rev(c("rel-weierstrass")),
-                                  H2O_Release_Patch_Number = rev(c("2")))
+  #SW 1.6 release info
+  sparkling_water_1.6 <- paste0("1.6.", as.character(seq(1, 13, 1)))
+  h2o_version_1.6 <- c("3.8.1.3","3.8.1.3","3.8.2.3","3.8.2.4","3.8.2.6","3.10.0.4","3.10.0.6","3.10.0.7","3.10.4.3",
+                       "3.10.4.5","3.10.4.8","3.10.5.2","3.14.0.2")
+  h2o_release_name_1.6 <- c("rel-turan","rel-turan","rel-turchin","rel-turchin","rel-turchin","rel-turing","rel-turing",
+                            "rel-turing","rel-ueno","rel-ueno","rel-ueno","rel-vajda", "rel-weierstrass")
+  h2o_patch_1.6 <- sub('.*\\.', '', h2o_version_1.6)
   
-  #Spark 2.1
+  #---------------------------------------------------------------------------------------------------------------------
+  #SW 2.0 release info
+  sparkling_water_2.0 <- paste0("2.0.", as.character(seq(0, 22, 1)))
+  h2o_version_2.0 <- c("3.10.0.7","3.10.0.10","3.10.0.10","3.10.1.2", "3.10.3.2","3.10.3.2","3.10.4.2","3.10.4.3","3.10.4.5",
+                       "3.10.4.8", "3.10.5.1","3.10.5.2", "3.10.5.4","3.10.5.4","3.10.5.4","3.14.0.2","3.14.0.6", "3.14.0.7", 
+                       "3.16.0.1","3.16.0.2","3.16.0.2","3.16.0.2","3.16.0.4")
+  h2o_release_name_2.0 <- c("rel-turing","rel-turing","rel-turing","rel-turnbull","rel-tverberg","rel-tverberg","rel-ueno","rel-ueno",
+                            "rel-ueno","rel-ueno","rel-vajda","rel-vajda","rel-vajda","rel-vajda","rel-vajda", "rel-weierstrass",
+                            "rel-weierstrass","rel-weierstrass","rel-wheeler","rel-wheeler","rel-wheeler","rel-wheeler","rel-wheeler")
+  h2o_patch_2.0 <- sub('.*\\.', '', h2o_version_2.0)
+  
+  #---------------------------------------------------------------------------------------------------------------------
+  #SW 2.1 release info
+  sparkling_water_2.1 <- paste0("2.1.", as.character(seq(0, 21, 1)))
+  h2o_version_2.1 <- c("3.10.3.2","3.10.4.2","3.10.4.2","3.10.4.3","3.10.4.5","3.10.4.6","3.10.4.7","3.10.4.7","3.10.4.8",
+                       "3.10.5.1", "3.10.5.2", "3.10.5.3", "3.10.5.4", "3.10.5.4", "3.14.0.2","3.14.0.6", "3.14.0.7", 
+                       "3.16.0.1","3.16.0.2","3.16.0.2","3.16.0.2","3.16.0.4")
+  h2o_release_name_2.1 <- c("rel-tverberg","rel-ueno", "rel-ueno","rel-ueno","rel-ueno","rel-ueno","rel-ueno","rel-ueno",
+                            "rel-ueno","rel-vajda","rel-vajda","rel-vajda","rel-vajda","rel-vajda","rel-weierstrass"
+                            ,"rel-weierstrass","rel-weierstrass","rel-wheeler","rel-wheeler","rel-wheeler","rel-wheeler",
+                            "rel-wheeler")
+  h2o_patch_2.1 <- sub('.*\\.', '', h2o_version_2.1)
+  
+  #---------------------------------------------------------------------------------------------------------------------
+  #SW 2.2 release info
+  sparkling_water_2.2 <- paste0("2.2.", as.character(seq(0, 7, 1)))
+  h2o_version_2.2 <- c("3.14.0.2", "3.14.0.6", "3.14.0.7", "3.16.0.1","3.16.0.2","3.16.0.2","3.16.0.2","3.16.0.4")
+  h2o_release_name.2.2 <- c("rel-weierstrass","rel-weierstrass","rel-weierstrass","rel-wheeler","rel-wheeler",
+                            "rel-wheeler","rel-wheeler","rel-wheeler")
+  h2o_patch_2.2 <- sub('.*\\.', '', h2o_version_2.2)
+  
+  #---------------------------------------------------------------------------------------------------------------------
+  #Spark 2.2 release table
+  release_spark_2_2 <- data.frame(Spark_Version = c("2.2"), 
+                                  Sparkling_Water_Version = rev(sparkling_water_2.2),
+                                  H2O_Version = rev(h2o_version_2.2),
+                                  H2O_Release_Name = rev(h2o_release_name.2.2),
+                                  H2O_Release_Patch_Number = rev(h2o_patch_2.2))
+  
+  #---------------------------------------------------------------------------------------------------------------------
+  #Spark 2.1 release table
   release_spark_2_1 <- data.frame(Spark_Version = c("2.1"), 
-                                Sparkling_Water_Version = rev(c("2.1.0","2.1.1","2.1.2","2.1.3","2.1.4","2.1.5","2.1.6","2.1.7","2.1.8","2.1.9",
-                                                                "2.1.10", "2.1.11", "2.1.12", "2.1.13", "2.1.14")),
-                                H2O_Version = rev(c("3.10.3.2","3.10.4.2","3.10.4.2","3.10.4.3","3.10.4.5","3.10.4.6","3.10.4.7","3.10.4.7","3.10.4.8",
-                                                    "3.10.5.1", "3.10.5.2", "3.10.5.3", "3.10.5.4", "3.10.5.4", "3.14.0.2")),
-                                H2O_Release_Name = rev(c("rel-tverberg","rel-ueno", "rel-ueno","rel-ueno","rel-ueno","rel-ueno","rel-ueno","rel-ueno",
-                                                         "rel-ueno","rel-vajda","rel-vajda","rel-vajda","rel-vajda","rel-vajda","rel-weierstrass")),
-                                H2O_Release_Patch_Number = rev(c("2","2","2","3","5","6","7","7","8","1","2","3","4","4","2")))
-  #Spark 2.0
+                                Sparkling_Water_Version = rev(sparkling_water_2.1),
+                                H2O_Version = rev(h2o_version_2.1),
+                                H2O_Release_Name = rev(h2o_release_name_2.1),
+                                H2O_Release_Patch_Number = rev(h2o_patch_2.1))
+  #---------------------------------------------------------------------------------------------------------------------
+  #Spark 2.0 release table
   release_spark_2 <- data.frame(Spark_Version = c("2.0"), 
-                              Sparkling_Water_Version = rev(c("2.0.0","2.0.1","2.0.2","2.0.3", "2.0.4","2.0.5","2.0.6","2.0.7","2.0.8","2.0.9","2.0.10",
-                                                              "2.0.11", "2.0.12", "2.0.13", "2.0.14", "2.0.15")),
-                              H2O_Version = rev(c("3.10.0.7","3.10.0.10","3.10.0.10","3.10.1.2", "3.10.3.2","3.10.3.2","3.10.4.2","3.10.4.3","3.10.4.5",
-                                                  "3.10.4.8", "3.10.5.1","3.10.5.2", "3.10.5.4","3.10.5.4","3.10.5.4","3.14.0.2")),
-                              H2O_Release_Name = rev(c("rel-turing","rel-turing","rel-turing","rel-turnbull","rel-tverberg","rel-tverberg","rel-ueno","rel-ueno",
-                                                       "rel-ueno","rel-ueno","rel-vajda","rel-vajda","rel-vajda","rel-vajda","rel-vajda", "rel-weierstrass")),
-                              H2O_Release_Patch_Number = rev(c("7","10","10","2","2","2","2","3","5","8","1","2","4","4","4","2")))
-  #Spark 1.6
+                              Sparkling_Water_Version = rev(sparkling_water_2.0),
+                              H2O_Version = rev(h2o_version_2.0),
+                              H2O_Release_Name = rev(h2o_release_name_2.0),
+                              H2O_Release_Patch_Number = rev(h2o_patch_2.0))
+  #---------------------------------------------------------------------------------------------------------------------
+  #Spark 1.6 release table
   release_spark_1_6 <- data.frame(Spark_Version = c("1.6"), 
-                                Sparkling_Water_Version = rev(c("1.6.1","1.6.2","1.6.3","1.6.4","1.6.5","1.6.6","1.6.7","1.6.8","1.6.9","1.6.10","1.6.11",
-                                                                "1.6.12","1.6.13")),
-                                H2O_Version = rev(c("3.8.1.3","3.8.1.3","3.8.2.3","3.8.2.4","3.8.2.6","3.10.0.4","3.10.0.6","3.10.0.7","3.10.4.3",
-                                                    "3.10.4.5","3.10.4.8","3.10.5.2","3.14.0.2")),
-                                H2O_Release_Name = rev(c("rel-turan","rel-turan","rel-turchin","rel-turchin","rel-turchin","rel-turing","rel-turing",
-                                                         "rel-turing","rel-ueno","rel-ueno","rel-ueno","rel-vajda", "rel-weierstrass")),
-                                H2O_Release_Patch_Number = rev(c("3","3","3","4","6","4","6","7","3","5","8","2","2")))
+                                Sparkling_Water_Version = rev(sparkling_water_1.6),
+                                H2O_Version = rev(h2o_version_1.6),
+                                H2O_Release_Name = rev(h2o_release_name_1.6),
+                                H2O_Release_Patch_Number = rev(h2o_patch_1.6))
+  #---------------------------------------------------------------------------------------------------------------------
+  
+  #Bind all tables together
   return(rbind(release_spark_2_2,release_spark_2_1,release_spark_2,release_spark_1_6))
 }
