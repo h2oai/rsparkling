@@ -54,9 +54,7 @@ library(sparklyr)
 spark_install(version = "2.0.0")
 ```
 
-#### Note: The previous command requires access to the internet
-
-**If you are not connected to the internet/behind a firewall you would need to do the following:** 
+**NOTE**: The previous command requires access to the internet. If you are not connected to the internet/behind a firewall you would need to do the following:
 
 1. Download [Spark](https://spark.apache.org/downloads.html) (Pick the major version that corresponds to Sparkling Water)
 2. Unzip Spark files
@@ -215,9 +213,8 @@ This will be the version of Sparkling Water that will be called in the `library(
 options(rsparkling.sparklingwater.version = "2.0.1") # Using Sparkling Water 2.0.1
 library(rsparkling) 
 ```
-#### Note: The previous command requires access to the internet
 
-**If you are not connected to the internet/behind a firewall you would need to do the following:** 
+**NOTE**: The previous command requires access to the internet. If you are not connected to the internet/behind a firewall you would need to do the following:
 
 1. Download the Sparkling Water jar of your choice based on the integration table above. To do this go to the following link where `[SW Major Version]` is the major version of Sparkling Water you wish to use, i.e., `2.0` and `[SW Minor Version]` is the minor version of Sparkling Water you wish to use, i.e., `5`.
 
@@ -245,11 +242,10 @@ Once we've installed **rsparkling** and it's dependencies, the first step would 
 ``` r
 sc <- spark_connect(master = "local", version = "2.0.0")
 ```
-#### Note: Please be sure to set `version` to the proper Spark version utilized by your version of Sparkling Water in `spark_connect()`
 
-#### Note: The previous command requires access to the internet
+**NOTE**: Please be sure to set `version` to the proper Spark version utilized by your version of Sparkling Water in `spark_connect()`
 
-**If you are not connected to the internet/behind a firewall you would need to do the following:** 
+**NOTE**: The previous command requires access to the internet. If you are not connected to the internet/behind a firewall you would need to do the following:
 
 1. Download [Spark](https://spark.apache.org/downloads.html) (Pick the major version that corresponds to Sparkling Water)
 2. Unzip Spark files
@@ -260,11 +256,23 @@ sc <- spark_connect(master = "local", version = "2.0.0")
 	```
 	
 4. Note, the `spark_home` parameter in `spark_connect` defaults to the `SPARK_HOME` environment variable. If `SPARK_HOME` is defined it will be always be used unless the `version` parameter is specified to force the use of a locally installed version.
-5. Run the following:
+5. Run the following to create a Spark connection using the default IP and port:
 
 	``` r
 	sc <- spark_connect(master = "local")
 	```
+
+### Changing the Default Port
+
+RSparkling does not expose setters and getters for specifying configuration options. You must specify the Spark configuration options directly, for example:
+
+``` r
+config=spark_config()
+config=c(config,list("spark.ext.h2o.node.port.base"="55555", "spark.ext.h2o.client.port.base"="44444"))
+sc <- spark_connect(master="yarn-client",app_name = "sparklyr",config = config )
+```
+
+In the above, `spark.ext.h2o.node.port.base` affects the worker nodes, and `spark.ext.h2o.client.port.base` affects the client.
 
 ## H2O Context and Flow
 
