@@ -8,3 +8,4 @@ h2ologs
 log4j.*
 .Rproj.user
 .Rapp.history
+.idea

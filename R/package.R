@@ -5,104 +5,115 @@
 #' @importFrom utils packageVersion
 NULL
 
+#' Get Spark Major and Minor version from full Spark version
+#'
+#' @return Major and minor version of Spark as String
+#' @export
+get_spark_major_minor_version <- function(spark_version) {
+  spark_major_version = as.package_version(spark_version)$major
+  spark_minor_version = as.package_version(spark_version)$minor
+  sprintf("%s.%s", spark_major_version, spark_minor_version)
+}
+
+#' Get Sparkling Water Major and Minor version from full Spark version
+#'
+#' @return Major and minor version of Sparkling Water as String
+#' @export
+get_sw_major_minor_version <- function(sw_version) {
+  sw_major_version = as.package_version(sw_version)$major
+  sw_minor_version = as.package_version(sw_version)$minor
+  sprintf("%s.%s", sw_major_version, sw_minor_version)
+}
+
+#' Determines the last Sparkling Water version for given Spark version
+#'
+#' @return Sparkling Water version
+#' @export
+get_latest_sw_version_for_spark <- function(spark_version) {
+  spark_major_minor <- get_spark_major_minor_version(spark_version)
+
+  sw_info <- head(subset(release_table, Spark_Version == spark_major_minor), 1)
+  # Collect Sparkling Water and H2O versions
+  h2o_version <- sw_info$H2O_Version
+  h2o_build_version <- sw_info$H2O_Release_Patch_Number
+  h2o_build_name <- sw_info$H2O_Release_Name
+  sw_version <- sw_info$Sparkling_Water_Version
+  message(sprintf("Spark version %s detected. Will call latest Sparkling Water version %s", spark_version, sw_version))
+  if (packageVersion("h2o") != h2o_version) {
+  message(paste0('\nDetected H2O version ', packageVersion("h2o"),'. Please install H2O version ', h2o_version ,', which is compliant with the latest Sparkling Water version for Spark ', spark_major_minor ,'.* -> Sparkling Water version ', sw_version,'\n
+  To update your h2o R package, copy/paste the following commands and then restart your R session:
+
+     detach("package:rsparkling", unload = TRUE)
+     if ("package:h2o" %in% search()) { detach("package:h2o", unload = TRUE) }
+     if (isNamespaceLoaded("h2o")){ unloadNamespace("h2o") }
+     remove.packages("h2o")
+     install.packages("h2o", type = "source", repos = "https://h2o-release.s3.amazonaws.com/h2o/rel-', h2o_build_name ,'/', h2o_build_version ,'/R")\n'))
+  }
+  sw_version
+}
+
+
+#' This method checks if we are running on Spark supported by Sparkling Water and ends otherwise
+#'
+#' @export
+check_spark_version_for_any_sw <- function(spark_version) {
+  spark_major_minor <- get_spark_major_minor_version(spark_version)
+  supported_spark_versions <- c("2,3", "2.2", "2.1", "2.0", "1.6")
+  if (!(spark_major_minor %in% supported_spark_versions)){
+    stop(sprintf("Supported Spark for Sparkling Water not detected. Please install Spark %s", paste(supported_spark_versions, collapse=", ")))
+  }
+}
+
+#' This method checks if we are running on Spark required by specific Sparkling Water version
+#'
+#' @export
+check_spark_version_for_sw_version <- function(spark_version, sw_version){
+  spark_major_minor <- get_spark_major_minor_version(spark_version)
+  sw_major_minor <- get_sw_major_minor_version(sw_version)
+
+  if(sw_major_minor != spark_major_minor){
+    stop(sprintf("You requested to use Sparkling Water %s, but it requires Spark %s.*. Current Spark is %s.", sw_version, sw_major_minor, spark_version))
+  }
+}
+
 # Define required spark packages
 spark_dependencies <- function(spark_version, scala_version, ...) {
-  
-  #Check if sw_version/sw_location is provided
+
   sw_version <- getOption("rsparkling.sparklingwater.version", default = NULL)
   sw_location <- getOption("rsparkling.sparklingwater.location", default = NULL)
-  
-  #If sw_version & sw_location are not provided, then check the Spark installation
-  ##If its Spark 2.2.*, then we fetch the latest Sparkling Water for Spark 2.2.*
-  #If its Spark 2.1.*, then we fetch the latest Sparkling Water for Spark 2.1.*
-  #If its Spark 2.0.*, then we fetch the latest Sparkling Water for Spark 2.0.*
-  #If its Spark 1.6.*, then we fetch the latest Sparkling Water for Spark 1.6.*
-  #If none of the above, then throw an exception
-  #Also provide adequate version of H2O for latest Sparkling Water
+
+  # Check if SW version and SW location is provided. That means that
+  # the user is passing custom Sparkling Water assembly JAR
+
   if (is.null(sw_version) && is.null(sw_location)) {
-    if (as.package_version(spark_version)$major == "2" && as.package_version(spark_version)$minor == "2") {
-      #Get latest Sparkling Water release for Spark 2.2.*
-      latest <- read.table("http://s3.amazonaws.com/h2o-release/sparkling-water/rel-2.2/latest")
-      sw_version <- sprintf("2.2.%s",latest)
-      message(sprintf("Spark version %s detected. Will call latest Sparkling Water version %s",spark_version,sw_version))
-      if (packageVersion("h2o") != "3.18.0.2") {
-        message(paste0('\nDetected H2O version ', packageVersion("h2o"),'. Please install H2O version 3.18.0.2, which is compliant with the latest Sparkling Water version for Spark 2.2.* -> Sparkling Water version ', sw_version,'\n
-To update your h2o R package, copy/paste the following commands and then restart your R session:
-                       
-   detach("package:rsparkling", unload = TRUE)
-   if ("package:h2o" %in% search()) { detach("package:h2o", unload = TRUE) }
-   if (isNamespaceLoaded("h2o")){ unloadNamespace("h2o") }
-   remove.packages("h2o")
-   install.packages("h2o", type = "source", repos = "https://h2o-release.s3.amazonaws.com/h2o/rel-wolpert/2/R")\n'))
-      }
-    }
-    else if (as.package_version(spark_version)$major == "2" && as.package_version(spark_version)$minor == "1") {
-      #Get latest Sparkling Water release for Spark 2.1.*
-      latest <- read.table("http://s3.amazonaws.com/h2o-release/sparkling-water/rel-2.1/latest")
-      sw_version <- sprintf("2.1.%s",latest)
-      message(sprintf("Spark version %s detected. Will call latest Sparkling Water version %s",spark_version,sw_version))
-      if (packageVersion("h2o") != "3.18.0.2") {
-        message(paste0('\nDetected H2O version ', packageVersion("h2o"),'. Please install H2O version 3.18.0.2, which is compliant with the latest Sparkling Water version for Spark 2.1.* -> Sparkling Water version ', sw_version,'\n
-To update your h2o R package, copy/paste the following commands and then restart your R session:
-                       
-  detach("package:rsparkling", unload = TRUE)
-  if ("package:h2o" %in% search()) { detach("package:h2o", unload = TRUE) }
-  if (isNamespaceLoaded("h2o")){ unloadNamespace("h2o") }
-  remove.packages("h2o")
-  install.packages("h2o", type = "source", repos =  "https://h2o-release.s3.amazonaws.com/h2o/rel-wolpert/2/R")\n'))
-      }
-    }else if (as.package_version(spark_version)$major == "2") {
-      #Get latest Sparkling Water release for Spark 2.0.*
-      latest <- read.table("http://s3.amazonaws.com/h2o-release/sparkling-water/rel-2.0/latest")
-      sw_version <- sprintf("2.0.%s",latest)
-      message(sprintf("Spark version %s detected. Will call latest Sparkling Water version %s",spark_version,sw_version))
-      if (packageVersion("h2o") != "3.18.0.2") {
-        message(paste0('\nDetected H2O version ', packageVersion("h2o"),'. Please install H2O version 3.18.0.2, which is compliant with the latest Sparkling Water version for Spark 2.0.* ->  Sparkling Water version ', sw_version,'\n
-To update your h2o R package, copy/paste the following commands and then restart your R session:
+    # The user did not provide SW version and SW location, that means that we can automatically
+    # detect latest Sparkling Water version for the current Spark version.
 
-  detach("package:rsparkling", unload = TRUE)
-  if ("package:h2o" %in% search()) { detach("package:h2o", unload = TRUE) }
-  if (isNamespaceLoaded("h2o")){ unloadNamespace("h2o") }
-  remove.packages("h2o")
-  install.packages("h2o", type = "source", repos =  "https://h2o-release.s3.amazonaws.com/h2o/rel-wolpert/2/R")\n'))
-      }
-    } else if (as.package_version(spark_version)$major == "1" && as.package_version(spark_version)$minor == "6" ) { #Assuming Spark 1.6
-      #Get latest Sparkling Water release for Spark 1.6.*
-      latest <- read.table("http://s3.amazonaws.com/h2o-release/sparkling-water/rel-1.6/latest")
-      sw_version <- sprintf("1.6.%s",latest) 
-      message(sprintf("Spark version %s detected. Will call latest Sparkling Water version %s",spark_version,sw_version))
-      if (packageVersion("h2o") != "3.16.0.2"){
-        message(paste0('\nDetected H2O version ', packageVersion("h2o"),'. Please install H2O version 3.16.0.2, which is compliant with the latest Sparkling Water version for Spark 1.6.* ->  Sparkling Water version ', sw_version,'\n
-To update your h2o R package, copy/paste the following commands and then restart your R session:
+    # First, check if we are running on any Spark supported by Sparkling Water
+    check_spark_version_for_any_sw(spark_version)
 
-  detach("package:rsparkling", unload = TRUE)
-  if ("package:h2o" %in% search()) { detach("package:h2o", unload = TRUE) }
-  if (isNamespaceLoaded("h2o")){ unloadNamespace("h2o") }
-  remove.packages("h2o")
-  install.packages("h2o", type = "source", repos =  "https://h2o-release.s3.amazonaws.com/h2o/rel-weierstrass/2/R")\n'))
-      }
-    } else {
-      stop("Spark installation 1.6.*, 2.0.*, 2.1.*, or 2.2.* are not detected. Please install Spark 1.6.*, 2.0.*, 2.1.*, or 2.2.*")
-    }
+    # Automatically determine the latest Sparkling Water version based on current Spark version
+    sw_version = get_latest_sw_version_for_spark(spark_version)
+  }else if(!is.null(sw_version) && is.null(sw_location)){
+    # The user specified SW version, but not SW location. It means we need to fetch Sparkling Water and need to
+    # check if correct spark is available and stop if not.
+    check_spark_version_for_sw_version(spark_version, sw_version)
+  }else if(!is.null(sw_version) && !is.null(sw_location)){
+    # The user provided both SW version and SW artifact, just check if we are running on correct Spark version for the
+    # desired Sparkling Water version
+    check_spark_version_for_sw_version(spark_version, sw_version)
+  }else{
+    # SW artifact is not empty, however Sparkling Water version is not specified.
+    stop(sprintf("You specified location to Sparkling artifact, but did not specify the version. The version is
+    required argument in case Sparkling Water artifact is specified."))
   }
-  
-  #Is a path to a Sparkling Water jar provided?
-  if ((!is.null(sw_location) && (!is.null(sw_version)) || !is.null(sw_location))) {
+
+  # If sparkling water jar artifact is specified, use it
+  if (!is.null(sw_location)) {
     spark_dependency(
       jars = c(sw_location)
     )
   } else {
-    if (as.package_version(spark_version)$major != as.package_version(sw_version)$major) {
-      stop(cat(paste0("Major version of Sparkling Water does not correspond to major Spark version.
-                      \nMajor Sparkling Water Version = ",as.package_version(sw_version)$major,
-                      "\nMajor Spark Version = ",as.package_version(spark_version)$major)))
-    }
-    if (as.package_version(spark_version)$minor != as.package_version(sw_version)$minor) {
-      stop(cat(paste0("Minor version of Sparkling Water does not correspond to minor Spark version.
-                      \nMinor Sparkling Water Version = ",as.package_version(sw_version)$minor,
-                      "\nMinor Spark Version = ",as.package_version(spark_version)$minor)))
-    }
-    
     spark_dependency(packages = c(
       sprintf("ai.h2o:sparkling-water-core_%s:%s", scala_version, sw_version),
       sprintf("ai.h2o:sparkling-water-ml_%s:%s", scala_version, sw_version),

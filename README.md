@@ -45,14 +45,14 @@ install.packages("sparklyr")
 
 #### Install Spark via sparklyr
 
-The **sparklyr** package makes it easy to install any particular version of Spark.  Prior to installing **h2o** and **rsparkling**, the user will need to decide which version of Spark they would like to work with, as the remaining installation revolve around a particular major version of Spark (1.6 vs 2.0).  
+The **sparklyr** package makes it easy to install any particular version of Spark.  Prior to installing **h2o** and **rsparkling**, the user will need to decide which version of Spark they would like to work with, as the remaining installation revolve around a particular major version of Spark (1.6, 2.0, 2.1, 2.2 or 2.3).  
 
-The following command will install Spark 2.0.0:
+The following command will install Spark 2.2.1:
 
 ``` r
 library(sparklyr)
-spark_install(version = "2.0.0")
-```
+spark_install(version = "")
+```2.2.1
 
 **NOTE**: The previous command requires access to the internet. If you are not connected to the internet/behind a firewall you would need to do the following:
 
@@ -70,11 +70,13 @@ spark_install(version = "2.0.0")
 
 **rsparkling** will automatically use the latest Sparkling Water based on the major Spark version provided. 
 
-Advanced users may want to choose a particular Sparking Water / H2O version (specific Sparkling Water versions must match specific Spark and H2O versions), however any 2.0 version of Sparkling Water will work with any minor version of Spark 2.0.  (similarly for 1.6).  Refer to integration info below.
+Advanced users may want to choose a particular Sparking Water / H2O version (specific Sparkling Water versions must match specific Spark and H2O versions), however any 2.2.* version of Sparkling Water will work with any minor version of Spark 2.2.*.  (similarly for other Spark branches).  Refer to integration info below.
 
 | Spark Version | Sparkling Water Version | H2O Version | H2O Release Name | H2O Release Patch Number |
 | ------------- | ----------------------- | ----------- | ---------------- | ------------------ |
-| 2.2.*         | 2.2.9                   | 3.18.0.2    | "rel-wolpert"    |        "2"         |
+| 2.2.*         | 2.2.11                  | 3.18.0.5    | "rel-wolpert"    |        "5"         |
+|               | 2.2.10                  | 3.18.0.4    | "rel-wolpert"    |        "4"         |
+|               | 2.2.9                   | 3.18.0.2    | "rel-wolpert"    |        "2"         |
 |               | 2.2.8                   | 3.18.0.1    | "rel-wolpert"    |        "1"         |
 |               | 2.2.7                   | 3.16.0.4    | "rel-wheeler"    |        "4"         |
 |               | 2.2.6                   | 3.16.0.2    | "rel-wheeler"    |        "2"         |
@@ -85,7 +87,9 @@ Advanced users may want to choose a particular Sparking Water / H2O version (spe
 |               | 2.2.1                   | 3.14.0.6    | "rel-weierstrass"|        "6"         |
 |               | 2.2.0                   | 3.14.0.2    | "rel-weierstrass"|        "2"         |
 |               |                         |             |                  |                    |
-| 2.1.*         | 2.1.23                  | 3.18.0.2    | "rel-wolpert"    |        "2"         |
+| 2.1.*         | 2.1.25                  | 3.18.0.5    | "rel-wolpert"    |        "5"         |
+|               | 2.1.24                  | 3.18.0.4    | "rel-wolpert"    |        "4"         |
+|               | 2.1.23                  | 3.18.0.2    | "rel-wolpert"    |        "2"         |
 |               | 2.1.22                  | 3.18.0.1    | "rel-wolpert"    |        "1"         |
 |               | 2.1.21                  | 3.16.0.4    | "rel-wheeler"    |        "4"         |
 |               | 2.1.20                  | 3.16.0.2    | "rel-wheeler"    |        "2"         |
@@ -110,7 +114,9 @@ Advanced users may want to choose a particular Sparking Water / H2O version (spe
 |               | 2.1.1                   | 3.10.4.2    | "rel-ueno"       |        "2"         |
 |               | 2.1.0                   | 3.10.3.2    | "rel-tverberg"   |        "2"         |
 |               |                         |             |                  |                    |
-| 2.0.*         | 2.0.24                  | 3.18.0.2    | "rel-wolpert"    |        "2"         |
+| 2.0.*         | 2.0.26                  | 3.18.0.5    | "rel-wolpert"    |        "5"         |
+|               | 2.0.25                  | 3.18.0.4    | "rel-wolpert"    |        "4"         |
+|               | 2.0.24                  | 3.18.0.2    | "rel-wolpert"    |        "2"         |
 |               | 2.0.23                  | 3.18.0.1    | "rel-wolpert"    |        "1"         |
 |               | 2.0.22                  | 3.16.0.4    | "rel-wheeler"    |        "4"         |
 |               | 2.0.21                  | 3.16.0.2    | "rel-wheeler"    |        "2"         |
@@ -155,11 +161,11 @@ Advanced users may want to choose a particular Sparking Water / H2O version (spe
 
 #### Install h2o from S3
 
-To install any one of the above versions, we recommend using the H2O hosted repository on S3. In future versions of **rsparkling**, all Sparkling Water compatible versions of H2O will be available on CRAN and will be able to be easily installed using the [versions](https://CRAN.R-project.org/package=versions) R package using a command such as `versions::install.packages("h2o", "3.8.1.3")`.
+To install any one of the above versions, we recommend using the H2O hosted repository on S3. In future versions of **rsparkling**, all Sparkling Water compatible versions of H2O will be available on CRAN and will be able to be easily installed using the [versions](https://CRAN.R-project.org/package=versions) R package using a command such as `versions::install.packages("h2o", "3.18.0.5")`.
 
-At present, you can install the **h2o** R package using a repository URL comprised of the H2O version name and number.  Example: `http://h2o-release.s3.amazonaws.com/h2o/rel-tverberg/2/R`
+At present, you can install the **h2o** R package using a repository URL comprised of the H2O version name and number.  Example: `http://h2o-release.s3.amazonaws.com/h2o/rel-wolpert/5/R`
 
-The R code below will install the most recent Spark 2.0 compatible release of H2O, which is "rel-tverberg" patch 2 (aka H2O version 3.10.3.2).
+The R code below will install the most recent Spark 2.2 compatible release of H2O, which is "rel-wolpert" patch 5 (aka H2O version 3.18.0.5).
 
 ```r
 # The following two commands remove any previously installed H2O packages for R.
@@ -173,8 +179,8 @@ for (pkg in pkgs) {
 }
 
 # Now we download, install, and initialize the H2O package for R. 
-# In this case we are using rel-tverberg 2 (3.10.3.2).
-install.packages("h2o", type = "source", repos = "http://h2o-release.s3.amazonaws.com/h2o/rel-tverberg/2/R")
+# In this case we are using rel-wolpert 5 (3.18.0.5).
+install.packages("h2o", type = "source", repos = "http://h2o-release.s3.amazonaws.com/h2o/rel-wolpert/5/R")
 ```
 
 
@@ -210,13 +216,13 @@ If you would like to use a custom Sparkling Water jar, then you need to call the
 This will be the version of Sparkling Water that will be called in the `library(rsparkling)` command, and thus you should set the option before loading the library.
 
 ``` r
-options(rsparkling.sparklingwater.version = "2.0.1") # Using Sparkling Water 2.0.1
+options(rsparkling.sparklingwater.version = "2.2.11") # Using Sparkling Water 2.2.11
 library(rsparkling) 
 ```
 
 **NOTE**: The previous command requires access to the internet. If you are not connected to the internet/behind a firewall you would need to do the following:
 
-1. Download the Sparkling Water jar of your choice based on the integration table above. To do this go to the following link where `[SW Major Version]` is the major version of Sparkling Water you wish to use, i.e., `2.0` and `[SW Minor Version]` is the minor version of Sparkling Water you wish to use, i.e., `5`.
+1. Download the Sparkling Water jar of your choice based on the integration table above. To do this go to the following link where `[SW Major Version]` is the major version of Sparkling Water you wish to use, i.e., `2.2` and `[SW Minor Version]` is the minor version of Sparkling Water you wish to use, i.e., `11`.
 
 	``` url
 	http://h2o-release.s3.amazonaws.com/sparkling-water/rel-[SW Major Version]/[SW Minor Version]/index.html
@@ -240,7 +246,7 @@ library(rsparkling)
 Once we've installed **rsparkling** and it's dependencies, the first step would be to create a Spark connection as follows:
 
 ``` r
-sc <- spark_connect(master = "local", version = "2.0.0")
+sc <- spark_connect(master = "local", version = "2.2.1")
 ```
 
 **NOTE**: Please be sure to set `version` to the proper Spark version utilized by your version of Sparkling Water in `spark_connect()`

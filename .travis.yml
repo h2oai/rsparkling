@@ -7,14 +7,11 @@ cache: packages
 jdk:
  - oraclejdk8
 
-r_github_packages:
-  - rstudio/sparklyr@2c59696
-
 env:
   global:
    -  NOT_CRAN="true"
   matrix:
-    - SPARKLINGWATER_VERSION="2.2.0"
-    - SPARKLINGWATER_VERSION="2.1.14"
-    - SPARKLINGWATER_VERSION="2.0.15"
+    - SPARKLINGWATER_VERSION="2.2.11"
+    - SPARKLINGWATER_VERSION="2.1.25"
+    - SPARKLINGWATER_VERSION="2.0.26"
     - SPARKLINGWATER_VERSION="1.6.13"
