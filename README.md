@@ -52,7 +52,7 @@ The following command will install Spark 2.2.1:
 ``` r
 library(sparklyr)
 spark_install(version = "")
-```2.2.1
+```
 
 **NOTE**: The previous command requires access to the internet. If you are not connected to the internet/behind a firewall you would need to do the following:
 
