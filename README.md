@@ -74,7 +74,13 @@ Advanced users may want to choose a particular Sparking Water / H2O version (spe
 
 | Spark Version | Sparkling Water Version | H2O Version | H2O Release Name | H2O Release Patch Number |
 | ------------- | ----------------------- | ----------- | ---------------- | ------------------ |
-| 2.2.*         | 2.2.11                  | 3.18.0.5    | "rel-wolpert"    |        "5"         |
+| 2.3.*         | 2.3.2                   | 3.18.0.8    | "rel-wolpert"    |        "8"         |
+|               | 2.3.1                   | 3.18.0.7    | "rel-wolpert"    |        "7"         |
+|               | 2.3.0                   | 3.18.0.5    | "rel-wolpert"    |        "5"         |
+|               |                         |             |                  |                    |
+| 2.2.*         | 2.2.13                  | 3.18.0.8    | "rel-wolpert"    |        "8"         |
+|               | 2.2.12                  | 3.18.0.7    | "rel-wolpert"    |        "7"         |
+|               | 2.2.11                  | 3.18.0.5    | "rel-wolpert"    |        "5"         |
 |               | 2.2.10                  | 3.18.0.4    | "rel-wolpert"    |        "4"         |
 |               | 2.2.9                   | 3.18.0.2    | "rel-wolpert"    |        "2"         |
 |               | 2.2.8                   | 3.18.0.1    | "rel-wolpert"    |        "1"         |
@@ -87,7 +93,9 @@ Advanced users may want to choose a particular Sparking Water / H2O version (spe
 |               | 2.2.1                   | 3.14.0.6    | "rel-weierstrass"|        "6"         |
 |               | 2.2.0                   | 3.14.0.2    | "rel-weierstrass"|        "2"         |
 |               |                         |             |                  |                    |
-| 2.1.*         | 2.1.25                  | 3.18.0.5    | "rel-wolpert"    |        "5"         |
+| 2.1.*         | 2.1.27                  | 3.18.0.8    | "rel-wolpert"    |        "8"         |
+|               | 2.1.26                  | 3.18.0.7    | "rel-wolpert"    |        "7"         |
+|               | 2.1.25                  | 3.18.0.5    | "rel-wolpert"    |        "5"         |
 |               | 2.1.24                  | 3.18.0.4    | "rel-wolpert"    |        "4"         |
 |               | 2.1.23                  | 3.18.0.2    | "rel-wolpert"    |        "2"         |
 |               | 2.1.22                  | 3.18.0.1    | "rel-wolpert"    |        "1"         |
@@ -114,7 +122,9 @@ Advanced users may want to choose a particular Sparking Water / H2O version (spe
 |               | 2.1.1                   | 3.10.4.2    | "rel-ueno"       |        "2"         |
 |               | 2.1.0                   | 3.10.3.2    | "rel-tverberg"   |        "2"         |
 |               |                         |             |                  |                    |
-| 2.0.*         | 2.0.26                  | 3.18.0.5    | "rel-wolpert"    |        "5"         |
+| 2.0.*         | 2.0.28                  | 3.18.0.8    | "rel-wolpert"    |        "8"         |
+|               | 2.0.27                  | 3.18.0.7    | "rel-wolpert"    |        "7"         |
+|               | 2.0.26                  | 3.18.0.5    | "rel-wolpert"    |        "5"         |
 |               | 2.0.25                  | 3.18.0.4    | "rel-wolpert"    |        "4"         |
 |               | 2.0.24                  | 3.18.0.2    | "rel-wolpert"    |        "2"         |
 |               | 2.0.23                  | 3.18.0.1    | "rel-wolpert"    |        "1"         |
