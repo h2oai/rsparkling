@@ -74,12 +74,14 @@ Advanced users may want to choose a particular Sparking Water / H2O version (spe
 
 | Spark Version | Sparkling Water Version | H2O Version | H2O Release Name | H2O Release Patch Number |
 | ------------- | ----------------------- | ----------- | ---------------- | ------------------ |
-| 2.3.*         | 2.3.3                   | 3.18.0.9    | "rel-wolpert"    |        "9"         |
+| 2.3.*         | 2.3.4                   | 3.18.0.9    | "rel-wolpert"    |        "9"         |
+|               | 2.3.3                   | 3.18.0.9    | "rel-wolpert"    |        "9"         |
 |               | 2.3.2                   | 3.18.0.8    | "rel-wolpert"    |        "8"         |
 |               | 2.3.1                   | 3.18.0.7    | "rel-wolpert"    |        "7"         |
 |               | 2.3.0                   | 3.18.0.5    | "rel-wolpert"    |        "5"         |
 |               |                         |             |                  |                    |
-| 2.2.*         | 2.2.14                  | 3.18.0.9    | "rel-wolpert"    |        "9"         |
+| 2.2.*         | 2.2.15                  | 3.18.0.9    | "rel-wolpert"    |        "9"         |
+|               | 2.2.14                  | 3.18.0.9    | "rel-wolpert"    |        "9"         |
 |               | 2.2.13                  | 3.18.0.8    | "rel-wolpert"    |        "8"         |
 |               | 2.2.12                  | 3.18.0.7    | "rel-wolpert"    |        "7"         |
 |               | 2.2.11                  | 3.18.0.5    | "rel-wolpert"    |        "5"         |
@@ -95,7 +97,8 @@ Advanced users may want to choose a particular Sparking Water / H2O version (spe
 |               | 2.2.1                   | 3.14.0.6    | "rel-weierstrass"|        "6"         |
 |               | 2.2.0                   | 3.14.0.2    | "rel-weierstrass"|        "2"         |
 |               |                         |             |                  |                    |
-| 2.1.*         | 2.1.28                  | 3.18.0.9    | "rel-wolpert"    |        "9"         |
+| 2.1.*         | 2.1.29                  | 3.18.0.9    | "rel-wolpert"    |        "9"         |
+|               | 2.1.28                  | 3.18.0.9    | "rel-wolpert"    |        "9"         |
 |               | 2.1.27                  | 3.18.0.8    | "rel-wolpert"    |        "8"         |
 |               | 2.1.26                  | 3.18.0.7    | "rel-wolpert"    |        "7"         |
 |               | 2.1.25                  | 3.18.0.5    | "rel-wolpert"    |        "5"         |
