@@ -1,5 +1,12 @@
 **If you are viewing this file on CRAN, please check latest news on GitHub [here](https://github.com/h2oai/rsparkling/blob/master/NEWS.md).**
 
+rsparkling 0.2.4 (2018-05-22)
+-----------------
+* Added latest `rsparkling` integration information [here](https://github.com/h2oai/rsparkling#install-h2o)
+* Updates to `rsparkling` [README](https://github.com/h2oai/rsparkling/blob/master/README.md)
+* Automate fetching of requirements if user does not provide specific Sparkling Water version [here](https://github.com/h2oai/rsparkling/blob/master/R/package.R)
+* Update `h2o_release_table` function [here](https://github.com/h2oai/rsparkling/blob/master/R/install_h2o.R), which now fetches package data instead of manually building the release table.
+	
 rsparkling 0.2.3 (2018-03-02)
 -----------------
 * Updated h2o-3 version to 3.18.0.2 if user does not provide specific Sparkling Water install information.
