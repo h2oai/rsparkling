@@ -2,12 +2,7 @@ library(jsonlite)
 
 get_build_vectors <- function(spark_major_minor_version){
     latest <- fromJSON(sprintf("http://s3.amazonaws.com/h2o-release/sparkling-water/rel-%s/latest", spark_major_minor_version))
-    if(spark_major_minor_version == "1.6"){
-        # Sparkling Water 1.6 not have 1.6.0 version
-        all_build_versions <- seq(1, latest)
-    }else{
-        all_build_versions <- seq(0, latest)
-    }
+    all_build_versions <- seq(0, latest)
 }
 
 
@@ -37,7 +32,7 @@ get_release_table_for <- function(spark_major_minor_version) {
 }
 
 h2o_release_table <- function(){
-    return(rbind(get_release_table_for("2.3"), get_release_table_for("2.2"), get_release_table_for("2.1"),get_release_table_for("2.0"),get_release_table_for("1.6")))
+    return(rbind(get_release_table_for("2.3"), get_release_table_for("2.2"), get_release_table_for("2.1")))
 }
 
 release_table <- h2o_release_table()

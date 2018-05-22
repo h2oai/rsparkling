@@ -12,7 +12,7 @@ run-tests () {
 
 export NOT_CRAN="true"
 if [ "$#" -eq "0" ]; then
-    run-tests 2.2.11 2.1.25 2.0.26 1.6.13 #Insert more Sparkling Water versions here.
+    run-tests 2.3.4 2.2.15 2.1.29 #Insert more Sparkling Water versions here.
 else
     run-tests "$@"
 fi

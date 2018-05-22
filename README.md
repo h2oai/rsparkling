@@ -45,9 +45,9 @@ install.packages("sparklyr")
 
 #### Install Spark via sparklyr
 
-The **sparklyr** package makes it easy to install any particular version of Spark.  Prior to installing **h2o** and **rsparkling**, the user will need to decide which version of Spark they would like to work with, as the remaining installation revolve around a particular major version of Spark (1.6, 2.0, 2.1, 2.2 or 2.3).  
+The **sparklyr** package makes it easy to install any particular version of Spark.  Prior to installing **h2o** and **rsparkling**, the user will need to decide which version of Spark they would like to work with, as the remaining installation revolve around a particular major version of Spark (2.1, 2.2 or 2.3).  
 
-The following command will install Spark 2.2.1:
+The following command will install Spark 2.3.5:
 
 ``` r
 library(sparklyr)
@@ -70,17 +70,19 @@ spark_install(version = "")
 
 **rsparkling** will automatically use the latest Sparkling Water based on the major Spark version provided. 
 
-Advanced users may want to choose a particular Sparking Water / H2O version (specific Sparkling Water versions must match specific Spark and H2O versions), however any 2.2.* version of Sparkling Water will work with any minor version of Spark 2.2.*.  (similarly for other Spark branches).  Refer to integration info below.
+Advanced users may want to choose a particular Sparking Water / H2O version (specific Sparkling Water versions must match specific Spark and H2O versions).  Refer to integration info below.
 
 | Spark Version | Sparkling Water Version | H2O Version | H2O Release Name | H2O Release Patch Number |
 | ------------- | ----------------------- | ----------- | ---------------- | ------------------ |
-| 2.3.*         | 2.3.4                   | 3.18.0.9    | "rel-wolpert"    |        "9"         |
+| 2.3.*         | 2.3.5                   | 3.18.0.10   | "rel-wolpert"    |        "10"        |
+|               | 2.3.4                   | 3.18.0.9    | "rel-wolpert"    |        "9"         |
 |               | 2.3.3                   | 3.18.0.9    | "rel-wolpert"    |        "9"         |
 |               | 2.3.2                   | 3.18.0.8    | "rel-wolpert"    |        "8"         |
 |               | 2.3.1                   | 3.18.0.7    | "rel-wolpert"    |        "7"         |
 |               | 2.3.0                   | 3.18.0.5    | "rel-wolpert"    |        "5"         |
 |               |                         |             |                  |                    |
-| 2.2.*         | 2.2.15                  | 3.18.0.9    | "rel-wolpert"    |        "9"         |
+| 2.2.*         | 2.2.16                  | 3.18.0.10   | "rel-wolpert"    |        "10"        |
+|               | 2.2.15                  | 3.18.0.9    | "rel-wolpert"    |        "9"         |
 |               | 2.2.14                  | 3.18.0.9    | "rel-wolpert"    |        "9"         |
 |               | 2.2.13                  | 3.18.0.8    | "rel-wolpert"    |        "8"         |
 |               | 2.2.12                  | 3.18.0.7    | "rel-wolpert"    |        "7"         |
@@ -97,7 +99,8 @@ Advanced users may want to choose a particular Sparking Water / H2O version (spe
 |               | 2.2.1                   | 3.14.0.6    | "rel-weierstrass"|        "6"         |
 |               | 2.2.0                   | 3.14.0.2    | "rel-weierstrass"|        "2"         |
 |               |                         |             |                  |                    |
-| 2.1.*         | 2.1.29                  | 3.18.0.9    | "rel-wolpert"    |        "9"         |
+| 2.1.*         | 2.1.30                  | 3.18.0.10   | "rel-wolpert"    |        "10"        |
+|               | 2.1.29                  | 3.18.0.9    | "rel-wolpert"    |        "9"         |
 |               | 2.1.28                  | 3.18.0.9    | "rel-wolpert"    |        "9"         |
 |               | 2.1.27                  | 3.18.0.8    | "rel-wolpert"    |        "8"         |
 |               | 2.1.26                  | 3.18.0.7    | "rel-wolpert"    |        "7"         |
@@ -127,61 +130,18 @@ Advanced users may want to choose a particular Sparking Water / H2O version (spe
 |               | 2.1.2                   | 3.10.4.2    | "rel-ueno"       |        "2"         |
 |               | 2.1.1                   | 3.10.4.2    | "rel-ueno"       |        "2"         |
 |               | 2.1.0                   | 3.10.3.2    | "rel-tverberg"   |        "2"         |
-|               |                         |             |                  |                    |
-| 2.0.*         | 2.0.28                  | 3.18.0.8    | "rel-wolpert"    |        "8"         |
-|               | 2.0.27                  | 3.18.0.7    | "rel-wolpert"    |        "7"         |
-|               | 2.0.26                  | 3.18.0.5    | "rel-wolpert"    |        "5"         |
-|               | 2.0.25                  | 3.18.0.4    | "rel-wolpert"    |        "4"         |
-|               | 2.0.24                  | 3.18.0.2    | "rel-wolpert"    |        "2"         |
-|               | 2.0.23                  | 3.18.0.1    | "rel-wolpert"    |        "1"         |
-|               | 2.0.22                  | 3.16.0.4    | "rel-wheeler"    |        "4"         |
-|               | 2.0.21                  | 3.16.0.2    | "rel-wheeler"    |        "2"         |
-|               | 2.0.20                  | 3.16.0.2    | "rel-wheeler"    |        "2"         |
-|               | 2.0.19                  | 3.16.0.2    | "rel-wheeler"    |        "2"         |
-|               | 2.0.18                  | 3.16.0.1    | "rel-wheeler"    |        "1"         |
-|               | 2.0.17                  | 3.14.0.7    | "rel-weierstrass"|        "7"         |
-|               | 2.0.16                  | 3.14.0.6    | "rel-weierstrass"|        "6"         |
-|               | 2.0.15                  | 3.14.0.2    | "rel-weierstrass"|        "2"         |
-|               | 2.0.14                  | 3.10.5.4    | "rel-vajda"      |        "4"         |
-|               | 2.0.13                  | 3.10.5.4    | "rel-vajda"      |        "4"         |
-|               | 2.0.12                  | 3.10.5.4    | "rel-vajda"      |        "4"         |
-|               | 2.0.11                  | 3.10.5.2    | "rel-vajda"      |        "2"         |
-|               | 2.0.10                  | 3.10.5.1    | "rel-vajda"      |        "1"         |
-|               | 2.0.9                   | 3.10.4.8    | "rel-ueno"       |        "8"         |
-|               | 2.0.8                   | 3.10.4.5    | "rel-ueno"       |        "5"         |
-|               | 2.0.7                   | 3.10.4.3    | "rel-ueno"       |        "3"         |
-|               | 2.0.6                   | 3.10.4.2    | "rel-ueno"       |        "2"         |
-|               | 2.0.5                   | 3.10.3.2    | "rel-tverberg"   |        "2"         |
-|               | 2.0.4                   | 3.10.3.2    | "rel-tverberg"   |        "2"         |
-|               | 2.0.3                   | 3.10.1.2    | "rel-turnbull"   |        "2"         |
-|               | 2.0.2                   | 3.10.0.10   | "rel-turing"     |        "10"        |
-|               | 2.0.1                   | 3.10.0.10   | "rel-turing"     |        "10"        |                  
-|               | 2.0.0                   | 3.10.0.7    | "rel-turing"     |        "7"         |
-|               |                         |             |                  |                    |
-| 1.6.*         | 1.6.13                  | 3.14.0.2    | "rel-weierstrass"|        "2"         |
-|               | 1.6.12                  | 3.10.5.2    | "rel-vajda"      |        "2"         |
-|               | 1.6.11                  | 3.10.4.8    | "rel-ueno"       |        "8"         |
-|               | 1.6.10                  | 3.10.4.5    | "rel-ueno"       |        "5"         |
-|               | 1.6.9                   | 3.10.4.3    | "rel-ueno"       |        "3"         |
-|               | 1.6.8                   | 3.10.0.7    | "rel-turing"     |        "7"         |
-|               | 1.6.7                   | 3.10.0.6    | "rel-turing"     |        "6"         |
-|               | 1.6.6                   | 3.10.0.4    | "rel-turing"     |        "4"         |
-|               | 1.6.5                   | 3.8.2.6     | "rel-turchin"    |        "6"         |
-|               | 1.6.4                   | 3.8.2.4     | "rel-turchin"    |        "4"         |
-|               | 1.6.3                   | 3.8.2.3     | "rel-turchin"    |        "3"         |
-|               | 1.6.2                   | 3.8.1.3     | "rel-turan"      |        "3"         |
-|               | 1.6.1                   | 3.8.1.3     | "rel-turan"      |        "3"         |
+
 
 
 **NOTE**: A call to `h2o_release_table()` will display the above table in your R console and return a data.frame containing this information.
 
 #### Install h2o from S3
 
-To install any one of the above versions, we recommend using the H2O hosted repository on S3. In future versions of **rsparkling**, all Sparkling Water compatible versions of H2O will be available on CRAN and will be able to be easily installed using the [versions](https://CRAN.R-project.org/package=versions) R package using a command such as `versions::install.packages("h2o", "3.18.0.5")`.
+To install any one of the above versions, we recommend using the H2O hosted repository on S3. In future versions of **rsparkling**, all Sparkling Water compatible versions of H2O will be available on CRAN and will be able to be easily installed using the [versions](https://CRAN.R-project.org/package=versions) R package using a command such as `versions::install.packages("h2o", "3.18.0.10")`.
 
-At present, you can install the **h2o** R package using a repository URL comprised of the H2O version name and number.  Example: `http://h2o-release.s3.amazonaws.com/h2o/rel-wolpert/5/R`
+At present, you can install the **h2o** R package using a repository URL comprised of the H2O version name and number.  Example: `http://h2o-release.s3.amazonaws.com/h2o/rel-wolpert/10/R`
 
-The R code below will install the most recent Spark 2.2 compatible release of H2O, which is "rel-wolpert" patch 5 (aka H2O version 3.18.0.5).
+The R code below will install the most recent Spark 2.3 compatible release of H2O, which is "rel-wolpert" patch 10 (aka H2O version 3.18.0.10).
 
 ```r
 # The following two commands remove any previously installed H2O packages for R.
@@ -196,7 +156,7 @@ for (pkg in pkgs) {
 
 # Now we download, install, and initialize the H2O package for R. 
 # In this case we are using rel-wolpert 5 (3.18.0.5).
-install.packages("h2o", type = "source", repos = "http://h2o-release.s3.amazonaws.com/h2o/rel-wolpert/5/R")
+install.packages("h2o", type = "source", repos = "http://h2o-release.s3.amazonaws.com/h2o/rel-wolpert/10/R")
 ```
 
 
@@ -219,10 +179,10 @@ devtools::install_github("h2oai/rsparkling", ref = "master")
 
 ### Advanced Configuration
 
-If a particular version of Sparkling Water is desired/required (instead of the most recent 2.0 or 1.6 compatible version), you can specify a specific Sparkling Water version by making a call to `options(rsparkling.sparklingwater.version = ...)`, which will globally set up a specific Sparkling Water version.
+If a particular version of Sparkling Water is desired/required, you can specify a specific Sparkling Water version by making a call to `options(rsparkling.sparklingwater.version = ...)`, which will globally set up a specific Sparkling Water version.
 
 **NOTE**:
-If you do not set `rsparkling.sparklingwater.version`, then the latest version of Sparkling Water will be used based on the version of Spark installed (Spark version 2.0.* or 1.6.*)
+If you do not set `rsparkling.sparklingwater.version`, then the latest version of Sparkling Water will be used based on the version of Spark installed.
 
 **NOTE**: 
 If you would like to use a custom Sparkling Water jar, then you need to call the following:
@@ -232,13 +192,13 @@ If you would like to use a custom Sparkling Water jar, then you need to call the
 This will be the version of Sparkling Water that will be called in the `library(rsparkling)` command, and thus you should set the option before loading the library.
 
 ``` r
-options(rsparkling.sparklingwater.version = "2.2.11") # Using Sparkling Water 2.2.11
+options(rsparkling.sparklingwater.version = "2.3.5") # Using Sparkling Water 2.3.5
 library(rsparkling) 
 ```
 
 **NOTE**: The previous command requires access to the internet. If you are not connected to the internet/behind a firewall you would need to do the following:
 
-1. Download the Sparkling Water jar of your choice based on the integration table above. To do this go to the following link where `[SW Major Version]` is the major version of Sparkling Water you wish to use, i.e., `2.2` and `[SW Minor Version]` is the minor version of Sparkling Water you wish to use, i.e., `11`.
+1. Download the Sparkling Water jar of your choice based on the integration table above. To do this go to the following link where `[SW Major Version]` is the major version of Sparkling Water you wish to use, i.e., `2.3` and `[SW Minor Version]` is the minor version of Sparkling Water you wish to use, i.e., `11`.
 
 	``` url
 	http://h2o-release.s3.amazonaws.com/sparkling-water/rel-[SW Major Version]/[SW Minor Version]/index.html
@@ -262,7 +222,7 @@ library(rsparkling)
 Once we've installed **rsparkling** and it's dependencies, the first step would be to create a Spark connection as follows:
 
 ``` r
-sc <- spark_connect(master = "local", version = "2.2.1")
+sc <- spark_connect(master = "local", version = "2.3.5")
 ```
 
 **NOTE**: Please be sure to set `version` to the proper Spark version utilized by your version of Sparkling Water in `spark_connect()`
