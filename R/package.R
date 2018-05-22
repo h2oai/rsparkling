@@ -30,6 +30,9 @@ get_sw_major_minor_version <- function(sw_version) {
 #' @return Sparkling Water version
 #' @export
 get_latest_sw_version_for_spark <- function(spark_version) {
+  Spark_Version <- NULL
+  Sparkling_Water_Version <- NULL
+  
   spark_major_minor <- get_spark_major_minor_version(spark_version)
 
   sw_info <- head(subset(release_table, Spark_Version == spark_major_minor), 1)
@@ -45,6 +48,8 @@ get_latest_sw_version_for_spark <- function(spark_version) {
 #'
 #' @export
 verify_h2o_version <- function(spark_version, sw_version) {
+    Spark_Version <- NULL
+    Sparkling_Water_Version <- NULL
     spark_major_minor <- get_spark_major_minor_version(spark_version)
     sw_info <- head(subset(release_table, Spark_Version == spark_major_minor & Sparkling_Water_Version == sw_version), 1)
     h2o_version <- sw_info$H2O_Version

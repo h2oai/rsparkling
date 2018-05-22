@@ -5,3 +5,4 @@ derby.log
 ^README.*$
 .gitlab-ci.yml
 .travis.yml
+before_release/*
