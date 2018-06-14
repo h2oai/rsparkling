@@ -74,14 +74,16 @@ Advanced users may want to choose a particular Sparking Water / H2O version (spe
 
 | Spark Version | Sparkling Water Version | H2O Version | H2O Release Name | H2O Release Patch Number |
 | ------------- | ----------------------- | ----------- | ---------------- | ------------------ |
-| 2.3.*         | 2.3.5                   | 3.18.0.10   | "rel-wolpert"    |        "10"        |
+| 2.3.*         | 2.3.6                   | 3.18.0.11   | "rel-wolpert"    |        "11"        |
+|               | 2.3.5                   | 3.18.0.10   | "rel-wolpert"    |        "10"        |
 |               | 2.3.4                   | 3.18.0.9    | "rel-wolpert"    |        "9"         |
 |               | 2.3.3                   | 3.18.0.9    | "rel-wolpert"    |        "9"         |
 |               | 2.3.2                   | 3.18.0.8    | "rel-wolpert"    |        "8"         |
 |               | 2.3.1                   | 3.18.0.7    | "rel-wolpert"    |        "7"         |
 |               | 2.3.0                   | 3.18.0.5    | "rel-wolpert"    |        "5"         |
 |               |                         |             |                  |                    |
-| 2.2.*         | 2.2.16                  | 3.18.0.10   | "rel-wolpert"    |        "10"        |
+| 2.2.*         | 2.2.17                  | 3.18.0.11   | "rel-wolpert"    |        "11"        |
+|               | 2.2.16                  | 3.18.0.10   | "rel-wolpert"    |        "10"        |
 |               | 2.2.15                  | 3.18.0.9    | "rel-wolpert"    |        "9"         |
 |               | 2.2.14                  | 3.18.0.9    | "rel-wolpert"    |        "9"         |
 |               | 2.2.13                  | 3.18.0.8    | "rel-wolpert"    |        "8"         |
@@ -99,7 +101,8 @@ Advanced users may want to choose a particular Sparking Water / H2O version (spe
 |               | 2.2.1                   | 3.14.0.6    | "rel-weierstrass"|        "6"         |
 |               | 2.2.0                   | 3.14.0.2    | "rel-weierstrass"|        "2"         |
 |               |                         |             |                  |                    |
-| 2.1.*         | 2.1.30                  | 3.18.0.10   | "rel-wolpert"    |        "10"        |
+| 2.1.*         | 2.1.31                  | 3.18.0.11   | "rel-wolpert"    |        "11"        |
+|               | 2.1.30                  | 3.18.0.10   | "rel-wolpert"    |        "10"        |
 |               | 2.1.29                  | 3.18.0.9    | "rel-wolpert"    |        "9"         |
 |               | 2.1.28                  | 3.18.0.9    | "rel-wolpert"    |        "9"         |
 |               | 2.1.27                  | 3.18.0.8    | "rel-wolpert"    |        "8"         |
@@ -137,11 +140,11 @@ Advanced users may want to choose a particular Sparking Water / H2O version (spe
 
 #### Install h2o from S3
 
-To install any one of the above versions, we recommend using the H2O hosted repository on S3. In future versions of **rsparkling**, all Sparkling Water compatible versions of H2O will be available on CRAN and will be able to be easily installed using the [versions](https://CRAN.R-project.org/package=versions) R package using a command such as `versions::install.packages("h2o", "3.18.0.10")`.
+To install any one of the above versions, we recommend using the H2O hosted repository on S3. In future versions of **rsparkling**, all Sparkling Water compatible versions of H2O will be available on CRAN and will be able to be easily installed using the [versions](https://CRAN.R-project.org/package=versions) R package using a command such as `versions::install.packages("h2o", "3.18.0.11")`.
 
 At present, you can install the **h2o** R package using a repository URL comprised of the H2O version name and number.  Example: `http://h2o-release.s3.amazonaws.com/h2o/rel-wolpert/10/R`
 
-The R code below will install the most recent Spark 2.3 compatible release of H2O, which is "rel-wolpert" patch 10 (aka H2O version 3.18.0.10).
+The R code below will install the most recent Spark 2.3 compatible release of H2O, which is "rel-wolpert" patch 11 (aka H2O version 3.18.0.11).
 
 ```r
 # The following two commands remove any previously installed H2O packages for R.
@@ -155,8 +158,8 @@ for (pkg in pkgs) {
 }
 
 # Now we download, install, and initialize the H2O package for R. 
-# In this case we are using rel-wolpert 5 (3.18.0.5).
-install.packages("h2o", type = "source", repos = "http://h2o-release.s3.amazonaws.com/h2o/rel-wolpert/10/R")
+# In this case we are using rel-wolpert 11 (3.18.0.11).
+install.packages("h2o", type = "source", repos = "http://h2o-release.s3.amazonaws.com/h2o/rel-wolpert/11/R")
 ```
 
 
