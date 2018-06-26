@@ -9,3 +9,5 @@ log4j.*
 .Rproj.user
 .Rapp.history
 .idea
+*.gz
+*.tar.gz
